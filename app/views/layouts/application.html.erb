@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nmi</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        NMI Researcher
+      </a>
+    </div>
+
+	<%if user_signed_in? %>
+
+    <ul class="nav navbar-nav navbar-right">
+		<li class="active">
+			<%= link_to("Logout", destroy_user_session_path, {:method => :delete}) %>
+		</li>
+    </ul>
+
+    <% end %>
+  </div>
+</nav>
+<div class="alert alert-warning" role="alert"><%= alert %></div>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="container">
+<%= yield %>
+</div>
+
+</body>
+</html>
