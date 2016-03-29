@@ -4,13 +4,17 @@ Rails.application.routes.draw do
   root "link#index"
 
   get "users", {to: "user#index"}
-  get "user/:user_name", {to: "user#show"}
+
+  get "user/links", {to: "link#index"}
+  get "user/links/:type", {to: "link#index"}
   get "user/:user_name/links/:type", {to: "link#index"}
 
+  get "user", {to: "user#show"}
   delete "user/:user_name", {to: "user#destroy"}
   
   get "links", {to: "link#index"}
   get "link/:id", {to: "link#show"}
+  delete "link/:id", {to: "link#destroy"}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

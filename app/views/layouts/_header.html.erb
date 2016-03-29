@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        NMI Researcher
+      </a>
+    </div>
+
+	<%if user_signed_in? %>
+
+    <ul class="nav navbar-nav navbar-right">
+    	
+      <li>
+        <%= link_to "Posted Links", {action: :index, controller: :link, type: :posted} %>
+      </li>
+      
+      <li>
+        <%= link_to "Followed Links", {action: :index, controller: :link, type: :posted}%>
+      </li>
+    	
+      <li>
+        <a href="">Link Search</a>
+      </li>
+
+      <li>
+        <%= link_to "All Users", {action: :index, controller: :user}%>
+      </li>
+      
+		  <li class="active">
+			 <%= link_to("Logout", destroy_user_session_path, {:method => :delete}) %>
+		  </li>
+    </ul>
+
+    <% end %>
+  </div>
+</nav>
