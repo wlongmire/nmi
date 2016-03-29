@@ -19,6 +19,9 @@
 	<%if user_signed_in? %>
 
     <ul class="nav navbar-nav navbar-right">
+    	<li><a href="">Submitted Links</a></li>
+    	<li><a href="">Followed Links</a></li>
+    	<li><a href="">Link Search</a></li>
 		<li class="active">
 			<%= link_to("Logout", destroy_user_session_path, {:method => :delete}) %>
 		</li>

@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root "session#index"
+  root "link#index"
+
+  get "users", {to: "user#index"}
+  get "user/:user_name", {to: "user#show"}
+  get "user/:user_name/links", {to: "link#index"}
   
+  get "links", {to: "link#index"}
+  get "link/:id", {to: "link#show"}
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
