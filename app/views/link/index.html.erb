@@ -1,1 +1,29 @@
-<h2>shows the links submitted by a particular</h2>
+<% if @links.length > 0 %>
+
+<table class="table">
+	<tr>
+		<td>URL</td>
+		<td>Posted By</td>
+		<td>Tags</td>
+		<td>Actions</td>
+	</tr>
+	
+	
+		<% @links.each do |l| %>
+		<tr>
+			<td><%= l.url %></td>
+			<td><%= l.user.username %></td>
+			<td> <a href="">marketing</a>,  <a href="">managing</a>  </td>
+			<td>
+				<%= link_to "Go to Link", l.url, {class: 'btn btn-default', type: "button", target: "_blank"} %>
+				<%= link_to "Link Details", {action: :show, id:l.id}, {class: 'btn btn-default', type: "button", target: "_blank"} %>
+			</td>
+		</tr>
+		<% end %>
+</table>
+
+<% else %>
+
+	<h2>No Links Posted By this User</h2>
+
+<% end %>

@@ -1,1 +1,24 @@
-<h2>shows a single link and comments</h2>
+<h2><%= @link.url %></h2>
+<h3>Posted by <a href="#"><%= @link.user.username %></a> </h3>
+
+<h3>Tags</h3>
+<a href=""><span class="label label-default">Marketing</span></a>
+<a href=""><span class="label label-default">Managing</span></a>
+
+<h3>Followers</h3>
+<a href="#">user2</a>, <a href="#">user3</a>, <a href="#">user4</a>
+
+<h3>Comments</h3>
+<div class="jumbotron">
+	<h4><%= Time.now - 3.hours %></h4>
+	<h4>posted by <a href="">user2</a></h4>
+	
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium atque numquam magni? Fugiat in tempora molestiae doloribus laudantium sapiente aliquid fugit consequuntur atque! Voluptate, aliquid, eveniet. Facilis ratione, nobis facere.</p>
+</div>
+
+<div class="jumbotron">
+	<h4><%= Time.now - 2.hours %></h4>
+	<h4>posted by <a href="">user1</a></h4>
+	
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium atque numquam magni? Fugiat in tempora molestiae doloribus laudantium sapiente aliquid fugit consequuntur atque! Voluptate, aliquid, eveniet. Facilis ratione, nobis facere.</p>
+</div>

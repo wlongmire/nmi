@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   get "users", {to: "user#index"}
   get "user/:user_name", {to: "user#show"}
-  get "user/:user_name/links", {to: "link#index"}
+  get "user/:user_name/links/:type", {to: "link#index"}
+
+  delete "user/:user_name", {to: "user#destroy"}
   
   get "links", {to: "link#index"}
   get "link/:id", {to: "link#show"}
