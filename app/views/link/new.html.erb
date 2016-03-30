@@ -1,0 +1,13 @@
+<%= form_for(:link, :url=> {:action=>'create'}) do |f| %>
+
+	<p>Name:</p> 
+	<%= f.text_field(:name) %><br/>
+	
+	<p>URL:</p> 
+	<%= f.text_field(:url) %><br/><br/>
+	
+	<div class="form-buttons">
+		<%= submit_tag("Create") %>
+	</div>
+		
+<% end %>

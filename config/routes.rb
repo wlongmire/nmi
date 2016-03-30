@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   
   get "links", {to: "link#index"}
   get "link/:id", {to: "link#show"}
+  get "link", {to: "link#new"}
+  post "link", {to: "link#create"}
+
   delete "link/:id", {to: "link#destroy"}
 
   # The priority is based upon order of creation: first created -> highest priority.

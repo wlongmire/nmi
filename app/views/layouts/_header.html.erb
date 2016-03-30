@@ -11,6 +11,10 @@
     <ul class="nav navbar-nav navbar-right">
     	
       <li>
+        <%= link_to "Add Link", {action: :new, controller: :link}%>
+      </li>
+      
+      <li>
         <%= link_to "Posted Links", {action: :index, controller: :link, type: :posted} %>
       </li>
       

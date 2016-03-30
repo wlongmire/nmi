@@ -17,6 +17,26 @@ class LinkController < ApplicationController
 		@link = Link.find(params[:id])
 	end
 
+	def new
+
+	end
+
+	def create
+		puts params
+
+		link = Link.create(params.require(:link).permit(:name, :url));
+		link.user = current_user
+
+		if link.save
+			flash[:success] = "Successfully Created."
+			redirect_to({action: :index})
+
+		else
+			flash[:alert] = link.errors.full_messages.join(", ")
+			render :new
+		end
+	end
+
 	def destroy
 		#shows indivisual link page
 		Link.find(params[:id]).destroy
