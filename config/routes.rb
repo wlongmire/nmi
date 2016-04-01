@@ -1,23 +1,28 @@
 Rails.application.routes.draw do
-  devise_for :users
-
-  root "link#index"
-
-  get "users", {to: "user#index"}
-
-  get "user/links", {to: "link#index"}
-  get "user/links/:type", {to: "link#index"}
-  get "user/:user_name/links/:type", {to: "link#index"}
-
-  get "user", {to: "user#show"}
-  delete "user/:user_name", {to: "user#destroy"}
   
-  get "links", {to: "link#index"}
-  get "link/:id", {to: "link#show"}
-  get "link", {to: "link#new"}
-  post "link", {to: "link#create"}
+  devise_for :users, :path_prefix => 'd'
 
-  delete "link/:id", {to: "link#destroy"}
+  root    "link#index"
+
+
+  get     "users",                          to: "user#index"
+
+  get     "user",                           to: "user#show"
+  delete  "user/:user_name",                to: "user#destroy"
+  
+  get     "user/:user_name/edit",           to: "user#edit", as: 'edit_user'
+  put     "user/:user_name/edit",           to: "user#edit"
+  
+  get     "user/links",                     to: "link#index"
+  get     "user/links/:type",               to: "link#index"
+  get     "user/:user_name/links/:type",    to: "link#index"
+  
+  get     "links",                          to: "link#index"
+  get     "link/:id",                       to: "link#show"
+  get     "link",                           to: "link#new"
+  post    "link",                           to: "link#create"
+
+  delete  "link/:id",                       to: "link#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

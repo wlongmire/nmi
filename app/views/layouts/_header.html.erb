@@ -11,15 +11,15 @@
     <ul class="nav navbar-nav navbar-right">
     	
       <li>
-        <%= link_to "Add Link", {action: :new, controller: :link}%>
+        <%= link_to "Add Link", link_path %>
       </li>
       
       <li>
-        <%= link_to "Posted Links", {action: :index, controller: :link, type: :posted} %>
+        <%= link_to "Posted Links", links_path, {type: :posted} %>
       </li>
       
       <li>
-        <%= link_to "Followed Links", {action: :index, controller: :link, type: :posted}%>
+        <%= link_to "Followed Links", links_path, {type: :posted}%>
       </li>
     	
       <li>
@@ -27,7 +27,7 @@
       </li>
 
       <li>
-        <%= link_to "All Users", {action: :index, controller: :user}%>
+        <%= link_to "All Users", users_path%>
       </li>
       
 		  <li class="active">

@@ -18,12 +18,9 @@ class LinkController < ApplicationController
 	end
 
 	def new
-
 	end
 
 	def create
-		puts params
-
 		link = Link.create(params.require(:link).permit(:name, :url));
 		link.user = current_user
 

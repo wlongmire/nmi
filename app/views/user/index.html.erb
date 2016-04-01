@@ -2,22 +2,30 @@
 	<tr>
 		<td>Username</td>
 		<td>Email</td>
+		<td>Role</td>
 		<td>Actions</td>
 	</tr>
 
 	<% @users.each do |u| %>
-	<tr>
-		<td> <%= u.username %> </td>
-		<td> <%= u.email %> </td>
-		<td>
-			
-			<div class="btn-group" role="group" aria-label="...">
-				<%= link_to "Show Links", {action: :index, controller: "link", user_name: u.username, type: :posted}, {class: 'btn btn-default', type: "button"} %>
-				<%= link_to "Delete", {action: "destroy", user_name: u.username}, {class: 'btn btn-danger', type: "button", method: :delete} %>
+		<tr>
+			<td> <%= u.username %> </td>
+			<td> <%= u.email %> </td>
+			<td> <%= (u.admin)? "Admin" : "Researcher" %> </td>
+			<td>
+				
+				<div class="btn-group" role="group" aria-label="...">
+					<%= link_to "Show Links", {action: :index, controller: "link", user_name: u.username, type: :posted}, {class: 'btn btn-default', type: "button"} %>
 
-			</div>
-		</td>
-	</tr>
+					<% if current_user.admin %>
+					
+						<%= link_to "Edit", edit_user_path(u.username), {class: 'btn btn-default', type: "button"} %>
+						<%= link_to "Delete", {action: "destroy", user_name: u.username}, {class: 'btn btn-danger', type: "button", method: :delete} %>
+						
+					<% end %>
+
+				</div>
+			</td>
+		</tr>
 	<% end %>
 	
 </table>
