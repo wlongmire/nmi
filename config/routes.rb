@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete  "user/:user_name",                to: "user#destroy"
   
   get     "user/:user_name/edit",           to: "user#edit", as: 'edit_user'
-  put     "user/:user_name/edit",           to: "user#edit"
+  put     "user",                           to: "user#update"
   
   get     "user/links",                     to: "link#index"
   get     "user/links/:type",               to: "link#index"
