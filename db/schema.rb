@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401005355) do
+ActiveRecord::Schema.define(version: 20160403174313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "folders", force: :cascade do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "folders_links", id: false, force: :cascade do |t|
+    t.integer "folder_id"
+    t.integer "link_id"
+  end
+
+  add_index "folders_links", ["folder_id", "link_id"], name: "index_folders_links_on_folder_id_and_link_id", using: :btree
 
   create_table "links", force: :cascade do |t|
     t.string   "url"

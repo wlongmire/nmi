@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   
+  resources :folders
+
   devise_for :users, :path_prefix => 'd'
 
   root    "link#index"
-
 
   get     "users",                          to: "user#index"
 

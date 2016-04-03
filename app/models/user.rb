@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
     validates :username, presence:true
 
   	has_many :links
+  	
+  	def isAdmin?
+  		return self.admin
+  	end
+
 end

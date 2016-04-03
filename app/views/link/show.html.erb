@@ -1,25 +1,36 @@
 <h2><a href="<%= @link.url %>" target="_blank"> <%= @link.name %> </a> </h2>
 
-<h3>Posted by <a href="#"><%= @link.user.username %></a> </h3>
 
-<h3>Tags</h3>
-<a href=""><span class="label label-default">Marketing</span></a>
-<a href=""><span class="label label-default">Managing</span></a>
+<div class="row">
+	<div class="col-md-3">
+		<%= image_tag "webshot.png", {class:"article_image"} %>
+	</div>
 
-<h3>Followers</h3>
-<a href="#">user2</a>, <a href="#">user3</a>, <a href="#">user4</a>
+	<div class="col-md-9">
+		<h3>Posted by <a href="#"><%= @link.user.username %></a> </h3>
 
-<h3>Comments</h3>
-<div class="jumbotron">
-	<h4><%= Time.now - 3.hours %></h4>
-	<h4>posted by <a href="">user2</a></h4>
-	
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium atque numquam magni? Fugiat in tempora molestiae doloribus laudantium sapiente aliquid fugit consequuntur atque! Voluptate, aliquid, eveniet. Facilis ratione, nobis facere.</p>
-</div>
+		<div id="excerpt_container">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint provident voluptas repellendus minus necessitatibus quaerat maxime omnis ea obcaecati consectetur, officiis porro error quidem, distinctio molestiae sit, ex accusantium tenetur.
+			</p>
 
-<div class="jumbotron">
-	<h4><%= Time.now - 2.hours %></h4>
-	<h4>posted by <a href="">user1</a></h4>
-	
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium atque numquam magni? Fugiat in tempora molestiae doloribus laudantium sapiente aliquid fugit consequuntur atque! Voluptate, aliquid, eveniet. Facilis ratione, nobis facere.</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint provident voluptas repellendus minus necessitatibus quaerat maxime omnis ea obcaecati consectetur, officiis porro error quidem, distinctio molestiae sit, ex accusantium tenetur.
+			</p>
+		</div>
+
+		<h3>Followers</h3>
+		<div id="followers_container">
+			<a href="#">user2</a>, <a href="#">user3</a>, <a href="#">user4</a>				
+		</div><br/>
+		
+		
+		<div id="link_container">
+			<% if @link.isPoster?(current_user) %>
+			<%= link_to "Delete", {action: :destroy, id: @link.id}, {class: 'btn btn-danger', type: "button", method: :delete} %>
+			<% end %>	
+		</div>
+		
+	</div>
+
 </div>

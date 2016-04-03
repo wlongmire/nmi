@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Title</h3>
+<p>
+  <%= @folder.title %>
+</p><br/>
+
+<h3>Description</h3>
+<p>
+  <%= @folder.desc %>
+</p><br/>
+
+
+<h3>Links</h3>
+<% if @folder.links.length > 0 %>
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Poster</th>
+		<th>Actions</th>
+	</tr>
+
+	<% @folder.links.each do |l| %>
+	
+	<tr>
+		<td><%= link_to l.name,  l.url, {target: "_blank"} %> </td>
+		<td><%= l.user.username %></td>
+		<td>
+			<div class="btn-group" role="group" aria-label="...">
+				<%= link_to "Link Details", {action: :show, controller: :link, id:l.id}, {class: 'btn btn-default', type: "button"} %>
+			</div>
+
+		</td>
+	</tr>
+	
+	<% end %>
+	
+</table>
+<% else %>
+	
+	<h3>No Links Currently Within this folder.</h3>
+<% end %>
+
+<%= link_to 'Edit', edit_folder_path(@folder), {class: 'btn btn-default', type: "button"} %>
+<%= link_to 'Back', folders_path, {class: 'btn btn-default', type: "button"}  %>

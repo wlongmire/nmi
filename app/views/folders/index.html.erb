@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Folders</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Desc</th>
+      <th>Total Articles</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @folders.each do |folder| %>
+      <tr>
+        <td><%= folder.title %></td>
+        <td><%= folder.desc %></td>
+        <td><%= folder.links.length %></td>
+        <td>
+          <div class="btn-group" role="group" aria-label="...">
+            <%= link_to 'Show', folder, {class: 'btn btn-default', type: "button"} %>
+            <%= link_to 'Edit', edit_folder_path(folder), {class: 'btn btn-default', type: "button"} %>
+            <%= link_to 'Destroy', folder, method: :delete, class: 'btn btn-danger', type: "button", data: { confirm: 'Are you sure?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Folder', new_folder_path, {class: 'btn btn-default', type: "button"}  %>
