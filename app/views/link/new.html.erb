@@ -4,8 +4,14 @@
 	<%= f.text_field(:name) %><br/>
 	
 	<p>URL:</p> 
-	<%= f.text_field(:url) %><br/><br/>
+	<%= f.text_field(:url) %><br/>
 	
+	<p>Folder:</p>
+	<%= f.select(:folders, Folder.all.collect {|p| [ p.title, p.id ] },
+			{ prompt:""}, 
+			{ multiple:true, size: (Folder.all.length+1), class:"form-control" }) %>
+	<br/>
+
 	<div class="form-buttons">
 		<%= submit_tag("Create") %>
 	</div>

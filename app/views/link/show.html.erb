@@ -8,6 +8,13 @@
 
 	<div class="col-md-9">
 		<h3>Posted by <a href="#"><%= @link.user.username %></a> </h3>
+		
+		<h3>Folders</h3>
+		<div id="folders_container">
+			<% @link.folders.each do |folder| %>
+			<span class="label label-info"><%= folder.title %></span>
+			<% end %>
+		</div><br/>
 
 		<div id="excerpt_container">
 			<p>

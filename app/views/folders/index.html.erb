@@ -21,8 +21,13 @@
         <td>
           <div class="btn-group" role="group" aria-label="...">
             <%= link_to 'Show', folder, {class: 'btn btn-default', type: "button"} %>
-            <%= link_to 'Edit', edit_folder_path(folder), {class: 'btn btn-default', type: "button"} %>
-            <%= link_to 'Destroy', folder, method: :delete, class: 'btn btn-danger', type: "button", data: { confirm: 'Are you sure?' } %>
+            
+            <% if current_user.isAdmin? %>
+              <%= link_to 'Edit', edit_folder_path(folder), {class: 'btn btn-default', type: "button"} %>
+
+              <%= link_to 'Destroy', folder, method: :delete, class: 'btn btn-danger', type: "button", data: { confirm: 'Are you sure?' } %>
+            <% end %>
+
           </div>
         </td>
       </tr>

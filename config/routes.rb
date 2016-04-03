@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   resources :folders
+  delete     "folder/:folder_id/link/:link_id",       to: "folders#remove_link", as: 'remove_link'
 
   devise_for :users, :path_prefix => 'd'
 

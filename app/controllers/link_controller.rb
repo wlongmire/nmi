@@ -24,6 +24,19 @@ class LinkController < ApplicationController
 		link = Link.create(params.require(:link).permit(:name, :url));
 		link.user = current_user
 
+		if params[:link][:folders].length <= 1
+			flash[:alert] = "Error: Must add at least one folder."
+			render :new
+			return
+		end
+
+		#collect folders
+		params[:link][:folders][1, params[:link][:folders].length-1].each do |f|
+			if (f != "") 
+				link.folders.push(Folder.find(f.to_i))
+			end
+		end
+
 		if link.save
 			flash[:success] = "Successfully Created."
 			redirect_to({action: :index})

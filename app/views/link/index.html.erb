@@ -4,7 +4,7 @@
 	<tr>
 		<td>URL</td>
 		<td>Posted By</td>
-		<td>Tags</td>
+		<td>Folders</td>
 		<td>Actions</td>
 	</tr>
 	
@@ -13,7 +13,11 @@
 		<tr>
 			<td><%= l.name %></td>
 			<td><%= l.user.username %></td>
-			<td> <a href="">marketing</a>,  <a href="">managing</a>  </td>
+			<td> 
+				<% l.folders.each do |folder| %>
+					<a href= <%=  folder_path(folder.id) %>> <span class="label label-info"><%= folder.title %></span> </a>
+				<% end %>
+			</td>
 			<td>
 				<div class="btn-group" role="group" aria-label="...">
 					<%= link_to "Go to Link", l.url, {class: 'btn btn-default', type: "button", target: "_blank"} %>

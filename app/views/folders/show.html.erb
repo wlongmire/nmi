@@ -28,6 +28,8 @@
 		<td>
 			<div class="btn-group" role="group" aria-label="...">
 				<%= link_to "Link Details", {action: :show, controller: :link, id:l.id}, {class: 'btn btn-default', type: "button"} %>
+
+				<%= link_to "Remove From Folder", {action: :remove_link, link_id:l.id, folder_id:@folder.id}, {method: :delete, class: 'btn btn-info', type: "button"} %>
 			</div>
 
 		</td>

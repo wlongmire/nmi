@@ -50,9 +50,14 @@ class FoldersController < ApplicationController
   end
 
   def remove_link
-    puts "$$$$$$$$$$$$$$$$$$"
-    puts params
-    puts "$$$$$$$$$$$$$$$$$$"
+    folder = Folder.find(params[:folder_id])
+    link = Link.find(params[:link_id])
+
+    if (link)
+      folder.links.delete(link)
+    end
+
+    redirect_to folders_url()
     
   end
 
