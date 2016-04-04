@@ -15,9 +15,6 @@ class FoldersController < ApplicationController
     @folder = Folder.new
   end
 
-  # GET
-  def edit
-  end
 
   # POST
   def create
@@ -31,6 +28,10 @@ class FoldersController < ApplicationController
   
   end
 
+  # GET
+  def edit
+  end
+  
   # PATCH/PUT /folders/1
   def update
     

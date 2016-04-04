@@ -1,0 +1,34 @@
+<h2>Edit Link</h2>
+
+<%= form_for(@link, url: {action: :update, controller: :link}, html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  
+  <div class="field">
+    <p>Description:</p> 
+    <%= f.text_area(:desc) %><br/>
+  </div>
+  
+  <p>Folder:</p>
+  <div class="field">
+    <%= f.select(:folders, Folder.all.collect {|p| [ p.title, p.id ] },
+        { prompt:""}, 
+        { multiple:true, size: (Folder.all.length+1), class:"form-control" }) %>
+  </div>
+  <br/>
+
+  <input type="hidden" name="id" value="<%= @link.id %>" />
+
+  <div class="actions">
+    <%= f.submit "Update", class:"btn btn-primary" %>
+  </div>
+
+<% end %>

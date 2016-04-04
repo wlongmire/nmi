@@ -16,14 +16,13 @@
 			<% end %>
 		</div><br/>
 
+		<h3>Description</h3>
 		<div id="excerpt_container">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint provident voluptas repellendus minus necessitatibus quaerat maxime omnis ea obcaecati consectetur, officiis porro error quidem, distinctio molestiae sit, ex accusantium tenetur.
-			</p>
-
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint provident voluptas repellendus minus necessitatibus quaerat maxime omnis ea obcaecati consectetur, officiis porro error quidem, distinctio molestiae sit, ex accusantium tenetur.
-			</p>
+			<% if @link.desc.nil? %>
+				<p>No Description Given</p>
+			<% else %>
+				<p><%= @link.desc %></p>
+			<% end %>
 		</div>
 
 		<h3>Followers</h3>
@@ -34,7 +33,13 @@
 		
 		<div id="link_container">
 			<% if @link.isPoster?(current_user) %>
-			<%= link_to "Delete", {action: :destroy, id: @link.id}, {class: 'btn btn-danger', type: "button", method: :delete} %>
+
+			<div class="btn-group" role="group" aria-label="...">
+				<%= link_to "Edit", {action: :edit, id: @link.id}, {class: 'btn btn-default', type: "button"} %>
+
+				<%= link_to "Delete", {action: :destroy, id: @link.id}, {class: 'btn btn-danger', type: "button", method: :delete} %>
+			</div>
+
 			<% end %>	
 		</div>
 		

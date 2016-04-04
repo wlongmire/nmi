@@ -21,7 +21,7 @@ class LinkController < ApplicationController
 	end
 
 	def create
-		link = Link.create(params.require(:link).permit(:name, :url));
+		link = Link.create(params.require(:link).permit(:name, :url, :desc));
 		link.name = link.name[0, 50] if link.name.length > 50
 		link.user = current_user
 
@@ -32,11 +32,8 @@ class LinkController < ApplicationController
 		end
 
 		#collect folders
-		params[:link][:folders][1, params[:link][:folders].length-1].each do |f|
-			if (f != "") 
-				link.folders.push(Folder.find(f.to_i))
-			end
-		end
+		folders_models = collect_folders params[:link][:folders]
+		folders_models.each { |f| link.folders.push(f) }
 
 		if link.save
 			flash[:success] = "Successfully Created."
@@ -48,10 +45,59 @@ class LinkController < ApplicationController
 		end
 	end
 
+	# GET
+  def edit
+  	@link = Link.find(params[:id])
+  end
+  
+  # PATCH/PUT /folders/1
+  def update
+
+  	link = Link.find(params[:id])
+		link.name = link.name[0, 50] if link.name.length > 50
+		link.url = params[:link][:url]
+		link.desc = params[:link][:desc]
+
+		if params[:link][:folders].length <= 1
+			flash[:alert] = "Error: Must add at least one folder."
+			render :new
+			return
+		end
+
+		link.folders = []
+		#collect folders
+		folders_models = collect_folders params[:link][:folders]
+		folders_models.each { |f| link.folders.push(f) }
+
+    if link.save
+      flash[:success] = "Successfully Created."
+			redirect_to({action: :index})
+
+    else
+      render :edit
+    end
+  
+  end
+  
 	def destroy
 		#shows indivisual link page
 		Link.find(params[:id]).destroy
 		
 		redirect_to ({action: :index})
+	end
+
+	private
+
+	def collect_folders f_list
+		
+		folders_models = []
+
+		f_list[1, f_list.length-1].each do |f|
+			if (f != "") 
+				folders_models.push(Folder.find(f.to_i))
+			end
+		end
+
+		folders_models
 	end
 end

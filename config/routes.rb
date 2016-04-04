@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get     "user",                           to: "user#show"
   delete  "user/:user_name",                to: "user#destroy"
   
-  get     "user/:user_name/edit",           to: "user#edit", as: 'edit_user'
+  get     "user/:user_name/edit",           to: "user#edit",    as: 'edit_user'
   put     "user",                           to: "user#update"
   
   get     "user/links",                     to: "link#index"
@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get     "links",                          to: "link#index"
   get     "link/:id",                       to: "link#show"
   get     "link",                           to: "link#new"
+
+  get     'link/:id/edit',                  to: "link#edit",    as: "edit_link"
+  put     "link",                           to: "link#update"
   post    "link",                           to: "link#create"
 
   delete  "link/:id",                       to: "link#destroy"

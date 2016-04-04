@@ -6,6 +6,9 @@
 	<p>URL:</p> 
 	<%= f.text_field(:url) %><br/>
 	
+	<p>Description:</p> 
+	<%= f.text_area(:desc) %><br/>
+
 	<p>Folder:</p>
 	<%= f.select(:folders, Folder.all.collect {|p| [ p.title, p.id ] },
 			{ prompt:""}, 
