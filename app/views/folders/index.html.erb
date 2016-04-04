@@ -37,4 +37,6 @@
 
 <br>
 
+<% if current_user.isAdmin? %>
 <%= link_to 'New Folder', new_folder_path, {class: 'btn btn-default', type: "button"}  %>
+<% end %>

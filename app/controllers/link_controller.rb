@@ -22,6 +22,7 @@ class LinkController < ApplicationController
 
 	def create
 		link = Link.create(params.require(:link).permit(:name, :url));
+		link.name = link.name[0, 50] if link.name.length > 50
 		link.user = current_user
 
 		if params[:link][:folders].length <= 1
