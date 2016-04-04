@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     validates :username, presence:true
 
   	has_many :links
+    has_and_belongs_to_many :followees, join_table: "followees_followers", class_name: "Link", foreign_key: "follower_id", association_foreign_key: "followee_id"
   	
   	def isAdmin?
   		return self.admin
