@@ -10,26 +10,26 @@
 	</tr>
 	
 	
-		<% @links.each do |l| %>
-		<tr>
-			<td><%= l.name %></td>
-			<td><%= l.user.username %></td>
-			<td><span class="label label-default"><%= (l.region.nil?)? "No Region Selected" : l.region.name %></span></td>
-			<td> 
-				<% l.folders.each do |folder| %>
-					<a href= <%=  folder_path(folder.id) %>> <span class="label label-info"><%= folder.title %></span> </a>
-				<% end %>
-			</td>
-			<td>
-				<div class="btn-group" role="group" aria-label="...">
-					<%= link_to "Go to Link", l.url, {class: 'btn btn-default', type: "button", target: "_blank"} %>
-					<%= link_to "Link Details", {action: :show, id:l.id}, {class: 'btn btn-default', type: "button"} %>
-					
-					<%= link_to "Delete", {action: :destroy, id: l.id}, {class: 'btn btn-danger', type: "button", method: :delete} %>
-				</div>
-			</td>
-		</tr>
-		<% end %>
+	<% @links.each do |l| %>
+	<tr>
+		<td><%= l.name %></td>
+		<td><%= l.user.username %></td>
+		<td><span class="label label-default"><%= (l.region.nil?)? "No Region Selected" : l.region.name %></span></td>
+		<td> 
+			<% l.folders.each do |folder| %>
+				<a href= <%=  folder_path(folder.id) %>> <span class="label label-info"><%= folder.title %></span> </a>
+			<% end %>
+		</td>
+		<td>
+			<div class="btn-group" role="group" aria-label="...">
+				<%= link_to "Go to Link", l.url, {class: 'btn btn-default', type: "button", target: "_blank"} %>
+				<%= link_to "Link Details", {action: :show, id:l.id}, {class: 'btn btn-default', type: "button"} %>
+				
+				<%= link_to "Delete", {action: :destroy, id: l.id}, {class: 'btn btn-danger', type: "button", method: :delete} %>
+			</div>
+		</td>
+	</tr>
+	<% end %>
 </table>
 
 <% else %>

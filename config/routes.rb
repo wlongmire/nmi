@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get     "link",                           to: "link#new"
 
   get     'link/:id/edit',                  to: "link#edit",    as: "edit_link"
-  put     "link",                           to: "link#update"
+  put    "link",                            to: "link#update"
   post    "link",                           to: "link#create"
 
   delete  "link/:id",                       to: "link#destroy"
