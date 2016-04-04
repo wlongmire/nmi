@@ -35,6 +35,10 @@ class LinkController < ApplicationController
 		folders_models = collect_folders params[:link][:folders]
 		folders_models.each { |f| link.folders.push(f) }
 
+		#collect folders
+		followers_models = collect_followers params[:link][:followers]
+		followers_models.each { |f| link.followers.push(f) if f != current_user }
+
 		if link.save
 			flash[:success] = "Successfully Created."
 			redirect_to({action: :index})
@@ -46,12 +50,12 @@ class LinkController < ApplicationController
 	end
 
 	# GET
-  	def edit
-  		@link = Link.find(params[:id])
-  	end
+  def edit
+  	@link = Link.find(params[:id])
+  end
   
-  	# PATCH/PUT /folders/1
-  	def update
+  # PATCH/PUT /folders/1
+  def update
 
 	  link = Link.find(params[:id])
 		link.name = link.name[0, 50] if link.name.length > 50
@@ -70,13 +74,17 @@ class LinkController < ApplicationController
 		folders_models = collect_folders params[:link][:folders]
 		folders_models.each { |f| link.folders.push(f) }
 
-	    if link.save
-	      flash[:success] = "Successfully Created."
-				redirect_to({action: :index})
+		link.followers = []
+		#collect folders
+		followers_models = collect_followers params[:link][:followers]
+		followers_models.each { |f| link.followers.push(f) if f != current_user }
 
-	    else
-	      render :edit
-	    end
+	  if link.save
+      flash[:success] = "Successfully Created."
+			redirect_to({action: :index})
+    else
+      render :edit
+    end
 	  
  	end
   
@@ -101,4 +109,18 @@ class LinkController < ApplicationController
 
 		folders_models
 	end
+
+	def collect_followers f_list
+		
+		follower_models = []
+
+		f_list[1, f_list.length-1].each do |f|
+			if (f != "") 
+				follower_models.push(User.find(f.to_i))
+			end
+		end
+
+		follower_models
+	end
+
 end

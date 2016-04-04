@@ -30,8 +30,14 @@
 
 		<h3>Followers</h3>
 		<div id="followers_container">
-			<a href="#">user2</a>, <a href="#">user3</a>, <a href="#">user4</a>				
-		</div>
+			<% if @link.followers.length == 0 %>
+				<p>No Followers</p>
+			<% else %>
+				<% @link.followers.each do |f| %>
+					<span class="label label-default"><%= f.username %></span>
+				<% end %>
+			<% end %>			
+		</div> <br/>
 		
 		<div id="link_container">
 			<% if @link.isPoster?(current_user) %>

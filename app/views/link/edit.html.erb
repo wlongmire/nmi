@@ -28,6 +28,13 @@
         { prompt:""}, 
         { multiple:true, size: (Folder.all.length+1), class:"form-control" }) %>
   </div>
+  
+  <div class="field">
+    <h4>Followers:</h4>
+    <%= f.select(:followers, User.all.collect {|u| [ u.username, u.id ] },
+        { prompt:""}, 
+        { multiple:true, size: (User.all.length+1), class:"form-control" }) %>
+  </div>
 
   <input type="hidden" name="id" value="<%= @link.id %>" />
 
