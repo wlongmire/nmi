@@ -21,7 +21,7 @@ class LinkController < ApplicationController
 	end
 
 	def create
-		link = Link.create(params.require(:link).permit(:name, :url, :desc));
+		link = Link.create(params.require(:link).permit(:name, :url, :desc, :region_id));
 		link.name = link.name[0, 50] if link.name.length > 50
 		link.user = current_user
 
@@ -46,17 +46,18 @@ class LinkController < ApplicationController
 	end
 
 	# GET
-  def edit
-  	@link = Link.find(params[:id])
-  end
+  	def edit
+  		@link = Link.find(params[:id])
+  	end
   
-  # PATCH/PUT /folders/1
-  def update
+  	# PATCH/PUT /folders/1
+  	def update
 
-  	link = Link.find(params[:id])
+	  link = Link.find(params[:id])
 		link.name = link.name[0, 50] if link.name.length > 50
 		link.url = params[:link][:url]
 		link.desc = params[:link][:desc]
+		link.region_id = params[:link][:region_id]
 
 		if params[:link][:folders].length <= 1
 			flash[:alert] = "Error: Must add at least one folder."
@@ -69,15 +70,15 @@ class LinkController < ApplicationController
 		folders_models = collect_folders params[:link][:folders]
 		folders_models.each { |f| link.folders.push(f) }
 
-    if link.save
-      flash[:success] = "Successfully Created."
-			redirect_to({action: :index})
+	    if link.save
+	      flash[:success] = "Successfully Created."
+				redirect_to({action: :index})
 
-    else
-      render :edit
-    end
-  
-  end
+	    else
+	      render :edit
+	    end
+	  
+ 	end
   
 	def destroy
 		#shows indivisual link page
