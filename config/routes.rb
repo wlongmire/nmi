@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :regions
   resources :folders
   delete     "folder/:folder_id/link/:link_id",       to: "folders#remove_link", as: 'remove_link'
 

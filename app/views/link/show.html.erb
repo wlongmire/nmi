@@ -9,12 +9,15 @@
 	<div class="col-md-9">
 		<h3>Posted by <a href="#"><%= @link.user.username %></a> </h3>
 		
+		<h3>Region:</h3>
+		<span class="label label-default"><%= (@link.region.nil?)? "No Region Selected" : @link.region.name %></span>
+
 		<h3>Folders</h3>
 		<div id="folders_container">
 			<% @link.folders.each do |folder| %>
 			<span class="label label-info"><%= folder.title %></span>
 			<% end %>
-		</div><br/>
+		</div>
 
 		<h3>Description</h3>
 		<div id="excerpt_container">
@@ -28,8 +31,7 @@
 		<h3>Followers</h3>
 		<div id="followers_container">
 			<a href="#">user2</a>, <a href="#">user3</a>, <a href="#">user4</a>				
-		</div><br/>
-		
+		</div>
 		
 		<div id="link_container">
 			<% if @link.isPoster?(current_user) %>

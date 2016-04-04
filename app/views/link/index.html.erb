@@ -4,6 +4,7 @@
 	<tr>
 		<td>URL</td>
 		<td>Posted By</td>
+		<td>Region</td>
 		<td>Folders</td>
 		<td>Actions</td>
 	</tr>
@@ -13,6 +14,7 @@
 		<tr>
 			<td><%= l.name %></td>
 			<td><%= l.user.username %></td>
+			<td><span class="label label-default"><%= (l.region.nil?)? "No Region Selected" : l.region.name %></span></td>
 			<td> 
 				<% l.folders.each do |folder| %>
 					<a href= <%=  folder_path(folder.id) %>> <span class="label label-info"><%= folder.title %></span> </a>
