@@ -13,7 +13,13 @@
 		<% @links.each do |l| %>
 		<tr>
 			<td><%= link_to l.name, l.url, {target: "_blank"} %></td>
-			<td><%= l.user.username if (!l.user.nil?) %></td>
+			<td><%= 
+			if (!l.user.nil?) 
+				(current_user == l.user)? "You" : l.user.username 
+			else
+				"No User Specified"
+			end
+			%></td>
 			<td><span class="label label-default"><%= (l.region.nil?)? "No Region Selected" : l.region.name %></span></td>
 			<td> 
 				<% l.folders.each do |folder| %>
@@ -23,11 +29,14 @@
 
 			<td>
 				<div class="btn-group" role="group" aria-label="...">
-					<%= link_to "Follow", {action: :edit, id: 
-						l.id}, {class: 'btn btn-info', type: "button"} %>
 
-					<%= link_to "Edit", {action: :edit, id: 
-						l.id}, {class: 'btn btn-default', type: "button"} %>
+					<% if current_user.isFollowing l.id %>
+						<%= link_to "Unfollow", user_unfollow_path(l.id), {class: 'btn btn-warning', type: "button", method: :put} %>
+					<% else %>
+						<%= link_to "Follow", user_follow_path(l.id), {class: 'btn btn-info', type: "button", method: :put} %>
+					<% end %>
+
+					<%= link_to "Edit", {action: :edit, id: l.id}, {class: 'btn btn-default', type: "button"} %>
 					<%= link_to "Link Details", {action: :show, id:l.id}, {class: 'btn btn-default', type: "button"} %>
 					<%= link_to "Delete", {action: :destroy, id: l.id}, {class: 'btn btn-danger', type: "button", method: :delete} %>
 				</div>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :regions
   resources :folders
-  delete     "folder/:folder_id/link/:link_id",       to: "folders#remove_link", as: 'remove_link'
+  delete     "folder/:folder_id/link/:link_id", to: "folders#remove_link", as: 'remove_link'
 
   devise_for :users, :path_prefix => 'd'
 
@@ -13,18 +13,20 @@ Rails.application.routes.draw do
   get     "user",                           to: "user#show"
   delete  "user/:user_name",                to: "user#destroy"
   
-  get     "user/:user_name/edit",           to: "user#edit",    as: 'edit_user'
+  get     "user/:user_name/edit",           to: "user#edit",        as: 'edit_user'
   put     "user",                           to: "user#update"
+  put     "user/follow/:link_id",           to: "user#follow",      as: 'user_follow'
+  put     "user/unfollow/:link_id",         to: "user#unfollow",    as: 'user_unfollow'
   
   get     "user/links",                     to: "link#index"
   get     "user/links/:type",               to: "link#index"
   get     "user/:user_name/links/:type",    to: "link#index"
   
-  get     "links/:type",                    to: "link#index",    as: "links"
-  get     "link/:id",                       to: "link#show"
-  get     "link",                           to: "link#new"
+  get     "links/:type",                    to: "link#index",       as: "links"
+  get     "link/:id",                       to: "link#show",        as: "link"
+  get     "link",                           to: "link#new",         as: "new_link"
 
-  get     'link/:id/edit',                  to: "link#edit",    as: "edit_link"
+  get     'link/:id/edit',                  to: "link#edit",        as: "edit_link"
   put     "link",                           to: "link#update"
   post    "link",                           to: "link#create"
 

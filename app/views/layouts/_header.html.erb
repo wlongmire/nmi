@@ -1,16 +1,14 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        NMI Researcher
-      </a>
+      <%= link_to "NMI Researcher", root_path, {class:"navbar-brand"} %>
     </div>
 
 	<%if user_signed_in? %>
 
     <ul class="nav navbar-nav navbar-right">
     	
-      <li> <%= link_to "Add Article", link_path %> </li>
+      <li> <%= link_to "Add Article", new_link_path %> </li>
       <li> <%= link_to "All Articles", links_path(:all) %> </li>
       <li> <%= link_to "Posted Articles", links_path(:posted) %> </li>
       <li> <%= link_to "Followed Articles", links_path(:followed)%></li>

@@ -50,7 +50,7 @@ class LinkController < ApplicationController
 
 		if link.save
 			flash[:success] = "Successfully Created."
-			redirect_to({action: :index})
+			redirect_to(link_path(link.id))
 
 		else
 			flash[:alert] = link.errors.full_messages.join(", ")
@@ -65,7 +65,6 @@ class LinkController < ApplicationController
   
   # PATCH/PUT /folders/1
   def update
-
 	  link = Link.find(params[:id])
 		link.name = link.name[0, 50] if link.name.length > 50
 		link.url = params[:link][:url]
@@ -84,15 +83,17 @@ class LinkController < ApplicationController
 		folders_models.each { |f| link.folders.push(f) }
 
 		link.followers = []
+	
 		#collect folders
 		followers_models = collect_followers params[:link][:followers]
-		followers_models.each { |f| link.followers.push(f) if f != current_user }
+
+		followers_models.each { |f| link.followers.push(f) }
 
 	  if link.save
-      flash[:success] = "Successfully Created."
-			redirect_to({action: :index})
+	    flash[:success] = "Successfully Created."
+			redirect_to(link_path(link.id))
     else
-      render :edit
+    	render :edit
     end
 	  
  	end

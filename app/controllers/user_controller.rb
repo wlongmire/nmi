@@ -20,11 +20,31 @@ class UserController < ApplicationController
 		@user = User.find_by({username: user_name})
 	end
 
-	def update
+	def follow
+		puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+		puts "#{current_user.username} is now following link #{params[:link_id]}"
+		puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 
+		link = Link.find(params[:link_id])
+		link.followers.push(current_user)
+
+		redirect_to links_path("following")
+	end
+
+	def unfollow
+		puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+		puts "#{current_user.username} is not following link #{params[:link_id]}"
+		puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+
+		link = Link.find(params[:link_id])
+		link.followers.delete(current_user)
+
+		redirect_to links_path("following")
+	end
+
+	def update
 		user_params = params[:user]
 		user = User.find(params[:id].to_i)
-
 
 		if (user_params.has_key? (:admin))
 			user[:admin] = (user_params[:admin] == "1")

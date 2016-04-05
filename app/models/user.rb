@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
   		return self.admin
   	end
 
+    def isFollowing link_id
+      link = Link.find(link_id)
+
+      (link.followers.where({id: self.id}).length > 0)
+    end
 end
