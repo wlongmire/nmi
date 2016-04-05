@@ -10,9 +10,10 @@
 
     <ul class="nav navbar-nav navbar-right">
     	
-      <li> <%= link_to "Add Link", link_path %> </li>
-      <li> <%= link_to "Posted Links", links_path, {type: :posted} %> </li>
-      <li> <%= link_to "Followed Links", links_path, {type: :posted}%></li>
+      <li> <%= link_to "Add Article", link_path %> </li>
+      <li> <%= link_to "All Articles", links_path(:all) %> </li>
+      <li> <%= link_to "Posted Articles", links_path(:posted) %> </li>
+      <li> <%= link_to "Followed Articles", links_path(:followed)%></li>
       <li> <a href="">Link Search</a> </li>
       <li> <%= link_to "All Users", users_path%> </li>      
       <li> <%= link_to "All Folders", folders_path%> </li>

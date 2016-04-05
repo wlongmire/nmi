@@ -6,10 +6,19 @@ class LinkController < ApplicationController
 		#shows all or by user
 		#also handles follow types
 		user_name = (params.has_key? (:user_name)) ? params[:user_name] : current_user.username
-		type = (params.has_key? (:type)) ? params[:type] : "posted"
+		@type = (params.has_key? (:type)) ? params[:type] : :all
 
-		user = User.find_by({username: user_name})
-		@links = Link.where({user:user})
+		case @type
+			when "posted"
+				user = User.find_by({username: user_name})
+				@links = Link.where({user:user})
+			when "followed"
+				user = User.find_by({username: user_name})
+				@links = Link.joins(:followers).where({user: user})
+			else
+				@links = Link.all
+		end
+
 	end
 
 	def show

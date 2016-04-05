@@ -11,7 +11,7 @@
 </p><br/>
 
 
-<h3>Links</h3>
+<h3>Articles</h3>
 <% if @folder.links.length > 0 %>
 <table class="table">
 	<tr>
@@ -27,7 +27,7 @@
 		<td><%= l.user.username %></td>
 		<td>
 			<div class="btn-group" role="group" aria-label="...">
-				<%= link_to "Link Details", {action: :show, controller: :link, id:l.id}, {class: 'btn btn-default', type: "button"} %>
+				<%= link_to "Details", {action: :show, controller: :link, id:l.id}, {class: 'btn btn-default', type: "button"} %>
 
 				<%= link_to "Remove From Folder", {action: :remove_link, link_id:l.id, folder_id:@folder.id}, {method: :delete, class: 'btn btn-info', type: "button"} %>
 			</div>
@@ -40,7 +40,7 @@
 </table>
 <% else %>
 	
-	<h3>No Links Currently Within this folder.</h3>
+	<h3>No Articles Currently Within this folder.</h3>
 <% end %>
 
 <%= link_to 'Edit', edit_folder_path(@folder), {class: 'btn btn-default', type: "button"} %>

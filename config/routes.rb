@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get     "user/links/:type",               to: "link#index"
   get     "user/:user_name/links/:type",    to: "link#index"
   
-  get     "links",                          to: "link#index"
+  get     "links/:type",                    to: "link#index",    as: "links"
   get     "link/:id",                       to: "link#show"
   get     "link",                           to: "link#new"
 
