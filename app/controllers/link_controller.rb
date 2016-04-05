@@ -14,7 +14,7 @@ class LinkController < ApplicationController
 				@links = Link.where({user:user})
 			when "followed"
 				user = User.find_by({username: user_name})
-				@links = Link.joins(:followers).where({user: user})
+				@links = user.followees
 			else
 				@links = Link.all
 		end
@@ -73,7 +73,7 @@ class LinkController < ApplicationController
 
 		if params[:link][:folders].length <= 1
 			flash[:alert] = "Error: Must add at least one folder."
-			render :new
+			redirect_to (edit_link_path(link.id))
 			return
 		end
 

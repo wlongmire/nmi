@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+	include MyUtils
+
 	before_filter :authenticate_user!
 	before_action :authenticate_user!
 	
@@ -21,9 +23,7 @@ class UserController < ApplicationController
 	end
 
 	def follow
-		puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-		puts "#{current_user.username} is now following link #{params[:link_id]}"
-		puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+		debugLog "#{current_user.username} is now following link #{params[:link_id]}"
 
 		link = Link.find(params[:link_id])
 		link.followers.push(current_user)
@@ -32,10 +32,8 @@ class UserController < ApplicationController
 	end
 
 	def unfollow
-		puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-		puts "#{current_user.username} is not following link #{params[:link_id]}"
-		puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-
+		debugLog "#{current_user.username} is not following link #{params[:link_id]}"
+		
 		link = Link.find(params[:link_id])
 		link.followers.delete(current_user)
 

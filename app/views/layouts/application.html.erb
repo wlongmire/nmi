@@ -15,9 +15,13 @@
 	<%= render :partial => '/layouts/header'%>
 	<div class="alert notice alert-warning" role="alert"><%= alert %></div>
   
-
+  
 	<div class="container">
-    <h4>Welcome <%= link_to current_user.username, edit_user_path(current_user.username) %></h4>
+    <%if user_signed_in? %>
+      <h3>Welcome <%= link_to current_user.username, user_path%></h3>
+    <%end%>
+    
+    
 		<%= yield %>
 	</div>
 
