@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404143034) do
+ActiveRecord::Schema.define(version: 20160406013133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20160404143034) do
   end
 
   add_index "folders_links", ["folder_id", "link_id"], name: "index_folders_links_on_folder_id_and_link_id", using: :btree
+
+  create_table "followees_followers", force: :cascade do |t|
+    t.integer "followee_id"
+    t.integer "follower_id"
+  end
+
+  add_index "followees_followers", ["followee_id", "follower_id"], name: "index_followees_followers_on_followee_id_and_follower_id", using: :btree
 
   create_table "links", force: :cascade do |t|
     t.string   "url"
@@ -65,5 +72,6 @@ ActiveRecord::Schema.define(version: 20160404143034) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

@@ -1,4 +1,6 @@
 class LinkController < ApplicationController
+	include MyUtils
+
 	before_filter :authenticate_user!
 	before_action :authenticate_user!
 
@@ -92,12 +94,24 @@ class LinkController < ApplicationController
 	  if link.save
 	    flash[:success] = "Successfully Created."
 			redirect_to(link_path(link.id))
-    else
-    	render :edit
-    end
-	  
+	    else
+	    	render :edit
+	    end
+		  
  	end
   
+
+  	def search
+  		@results = Link.all
+
+  		debugLog params
+  		
+  		@results = @results.where('lower(name) ILIKE :search OR lower(url) ILIKE :search', search:"%#{params[:text].downcase}%") if !params[:text].nil? and !(params[:text] == "")
+  		@results = @results.where({region_id: params[:region_id]}) if !params[:region_id].nil? and !(params[:region_id] == "")
+  		@results = @results.joins(:folders).where('folder_id = ?', params[:folder_id]) if !params[:folder_id].nil? and !(params[:folder_id] == "")
+
+  	end
+
 	def destroy
 		#shows indivisual link page
 		Link.find(params[:id]).destroy

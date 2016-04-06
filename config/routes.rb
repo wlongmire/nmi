@@ -18,11 +18,14 @@ Rails.application.routes.draw do
   put     "user/follow/:link_id",           to: "user#follow",      as: 'user_follow'
   put     "user/unfollow/:link_id",         to: "user#unfollow",    as: 'user_unfollow'
   
+
+  get     "user/links/:type",               to: "link#index",       as: 'links'
   get     "user/links",                     to: "link#index"
-  get     "user/links/:type",               to: "link#index"
   get     "user/:user_name/links/:type",    to: "link#index"
   
-  get     "links/:type",                    to: "link#index",       as: "links"
+  get     "links/search",                   to: "link#search",      as: "search_links"
+  post    "links/search",                   to: "link#search"
+
   get     "link/:id",                       to: "link#show",        as: "link"
   get     "link",                           to: "link#new",         as: "new_link"
 

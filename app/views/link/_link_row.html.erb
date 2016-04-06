@@ -1,0 +1,36 @@
+<% link = locals[:link]%>
+
+<td><%= link_to link.name, link.url, {target: "_blank"} %></td>
+
+<td>
+<%= 
+if (!link.user.nil?) 
+	(current_user == link.user)? "You" : link.user.username 
+else
+	"No User Specified"
+end
+%>
+</td>
+
+<td><span class="label label-default"><%= (link.region.nil?)? "No Region Selected" : link.region.name %></span></td>
+
+<td> 
+	<% link.folders.each do |folder| %>
+		<a href= <%=  folder_path(folder.id) %>> <span class="label label-info"><%= folder.title %></span> </a>
+	<% end %>
+</td>
+
+<td>
+	<div class="btn-group" role="group" aria-label="...">
+
+		<% if current_user.isFollowing link.id %>
+			<%= link_to "Unfollow", user_unfollow_path(link.id), {class: 'btn btn-warning', type: "button", method: :put} %>
+		<% else %>
+			<%= link_to "Follow", user_follow_path(link.id), {class: 'btn btn-info', type: "button", method: :put} %>
+		<% end %>
+
+		<%= link_to "Edit", {action: :edit, id: link.id}, {class: 'btn btn-default', type: "button"} %>
+		<%= link_to "Link Details", {action: :show, id:link.id}, {class: 'btn btn-default', type: "button"} %>
+		<%= link_to "Delete", {action: :destroy, id: link.id}, {class: 'btn btn-danger', type: "button", method: :delete} %>
+	</div>
+</td>

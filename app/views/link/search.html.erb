@@ -1,0 +1,32 @@
+<%= form_tag(controller: :link, action: :search, method: :get) do %>
+	
+	<span>Text Search</span><%= text_field_tag(:text) %>
+	
+    <span>Region:</span> <%= select_tag :region_id, options_for_select(Region.all.collect {|r| [ r.name, r.id ] }), include_blank: true %>
+
+	<span>Category:</span> <%= select_tag :folder_id, options_for_select(Folder.all.collect {|p| [ p.title, p.id ] }), include_blank: true %>
+	
+	<div class="form-buttons">
+		<%= submit_tag("Search") %>
+	</div>
+		
+<% end %>
+<br/>
+
+<%if !@results.empty? %>
+
+<table class="table">
+	<tr>
+		<td>Name</td>
+		<td>Posted By</td>
+		<td>Region</td>
+		<td>Folders</td>
+		<td>Actions</td>
+	</tr>
+
+	<% @results.each do |l| %>
+		<tr> <%= render 'link_row', :locals => {:link => l} %> </tr>
+	<% end %>
+</table>
+
+<% end %>
