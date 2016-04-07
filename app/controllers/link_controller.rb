@@ -38,9 +38,10 @@ class LinkController < ApplicationController
 			flash[:alert] = "Error: Must add a url."
 			redirect_to new_link_path
 		else
-			page = MetaInspector.new(url)
+			# page = MetaInspector.new(url)
 
-			@link = Link.new({url:url, name:page.best_title, desc:page.description, img:page.images.best, favicon:page.images.favicon})
+			# @link = Link.new({url:url, name:page.best_title, desc:page.description, img:page.images.best, favicon:page.images.favicon})
+			@link = Link.new({url:url, name:"thig", desc:"", img:nil, favicon:nil})
 			render :urlGenerated
 		end
 	end
