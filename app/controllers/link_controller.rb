@@ -41,7 +41,7 @@ class LinkController < ApplicationController
 			page = MetaInspector.new(url)
 
 			# @link = Link.new({url:url, name:page.best_title, desc:page.description, img:page.images.best, favicon:page.images.favicon})
-			@link = Link.new({url:url, name:page.best_title, desc:"", img:nil, favicon:nil})
+			@link = Link.new({url:url, name:page.best_title, desc:page.description, img:page.images.best, favicon:page.images.favicon})
 			render :urlGenerated
 		end
 	end
