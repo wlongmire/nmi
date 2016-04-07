@@ -1,6 +1,15 @@
 <% link = locals[:link]%>
 
-<td><%= link_to link.name, link.url, {target: "_blank"} %></td>
+<td>
+
+<%if link.favicon.nil? %>
+	<%= image_tag "favicon.png" %>
+<%else%>
+	<%= image_tag link.favicon, {class:"fav"} %>
+<%end%>
+
+<%= link_to link.name, link.url, {target: "_blank"} %>
+</td>
 
 <td>
 <%= 

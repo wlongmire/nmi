@@ -1,42 +1,11 @@
-<%= form_for(:link, :url=> {:action=>'create'}) do |f| %>
-	
-	<div class="field">
-		<h4>Name:</h4> 
-		<%= f.text_field(:name) %>
-	</div>
-
+<%= form_for(:link, :url=> generate_path) do |f| %>
 	<div class="field">
 		<h4>URL:</h4> 
 		<%= f.text_field(:url) %>
 	</div>
-
-	<div class="field">	
-		<h4>Description:</h4> 
-		<%= f.text_area(:desc) %>
-	</div>
 	
-	<div class="field">
-    	<h4>Region:</h4>
-    	<%= f.select(:region_id, Region.all.collect {|r| [ r.name, r.id ] }) %>
-  	</div>
-
-	<div class="field">	
-		<h4>Folder:</h4>
-		<%= f.select(:folders, Folder.all.collect {|p| [ p.title, p.id ] },
-			{ prompt:""}, 
-			{ multiple:true, size: (Folder.all.length+1), class:"form-control" }) %>
-	</div>
-
-	 <div class="field">
-    <h4>Followers:</h4>
-    <%= f.select(:followers, User.all.collect {|u| [ u.username, u.id ] },
-        { prompt:""}, 
-        { multiple:true, size: (User.all.length+1), class:"form-control" }) %>
-  </div>
-
-
 	<div class="form-buttons">
-		<%= submit_tag("Create") %>
+		<%= submit_tag("Generate From Url") %>
 	</div>
 		
 <% end %>

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   get     "link/:id",                       to: "link#show",        as: "link"
   get     "link",                           to: "link#new",         as: "new_link"
+  post    "link/generate",                  to: "link#generate",    as: "generate"
 
   get     'link/:id/edit',                  to: "link#edit",        as: "edit_link"
   put     "link",                           to: "link#update"

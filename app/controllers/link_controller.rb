@@ -31,16 +31,23 @@ class LinkController < ApplicationController
 	def new
 	end
 
-	def create
-		link = Link.create(params.require(:link).permit(:name, :url, :desc, :region_id));
-		link.name = link.name[0, 50] if link.name.length > 50
-		link.user = current_user
+	def generate
+		url = params[:link][:url]
 
-		if params[:link][:folders].length <= 1
-			flash[:alert] = "Error: Must add at least one folder."
-			render :new
-			return
+		if url.nil?
+			flash[:alert] = "Error: Must add a url."
+			redirect_to new_link_path
+		else
+			page = MetaInspector.new(url)
+
+			@link = Link.new({url:url, name:page.best_title, desc:page.description, img:page.images.best, favicon:page.images.favicon})
+			render :urlGenerated
 		end
+	end
+
+	def create
+		link = Link.create(params.require(:link).permit(:name, :url, :desc, :img, :favicon, :region_id));
+		link.user = current_user
 
 		#collect folders
 		folders_models = collect_folders params[:link][:folders]
@@ -56,7 +63,7 @@ class LinkController < ApplicationController
 
 		else
 			flash[:alert] = link.errors.full_messages.join(", ")
-			render :new
+			render :urlGenerated
 		end
 	end
 
@@ -68,16 +75,10 @@ class LinkController < ApplicationController
   # PATCH/PUT /folders/1
   def update
 	  link = Link.find(params[:id])
-		link.name = link.name[0, 50] if link.name.length > 50
+		link.name = params[:link][:name]
 		link.url = params[:link][:url]
 		link.desc = params[:link][:desc]
 		link.region_id = params[:link][:region_id]
-
-		if params[:link][:folders].length <= 1
-			flash[:alert] = "Error: Must add at least one folder."
-			redirect_to (edit_link_path(link.id))
-			return
-		end
 
 		link.folders = []
 		#collect folders
