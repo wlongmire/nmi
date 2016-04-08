@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Desc</th>
+      <th>Description</th>
       <th>Total Articles</th>
       <th>Actions</th>
     </tr>
@@ -16,7 +16,7 @@
     <% @folders.each do |folder| %>
       <tr>
         <td><%= folder.title %></td>
-        <td><%= folder.desc %></td>
+        <td><%= folder.description %></td>
         <td><%= folder.links.length %></td>
         <td>
           <div class="btn-group" role="group" aria-label="...">

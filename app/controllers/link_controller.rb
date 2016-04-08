@@ -40,14 +40,14 @@ class LinkController < ApplicationController
 		else
 			page = MetaInspector.new(url)
 
-			# @link = Link.new({url:url, name:page.best_title, desc:page.description, img:page.images.best, favicon:page.images.favicon})
-			@link = Link.new({url:url, name:page.best_title, desc:page.description, img:page.images.best, favicon:page.images.favicon})
+			# @link = Link.new({url:url, name:page.best_title, description:page.description, img:page.images.best, favicon:page.images.favicon})
+			@link = Link.new({url:url, name:page.best_title, description:page.description, img:page.images.best, favicon:page.images.favicon})
 			render :urlGenerated
 		end
 	end
 
 	def create
-		link = Link.create(params.require(:link).permit(:name, :url, :desc, :img, :favicon, :region_id));
+		link = Link.create(params.require(:link).permit(:name, :url, :description, :img, :favicon, :region_id));
 		link.user = current_user
 
 		#collect folders
@@ -78,7 +78,7 @@ class LinkController < ApplicationController
 	  link = Link.find(params[:id])
 		link.name = params[:link][:name]
 		link.url = params[:link][:url]
-		link.desc = params[:link][:desc]
+		link.description = params[:link][:description]
 		link.region_id = params[:link][:region_id]
 
 		link.folders = []
@@ -108,7 +108,7 @@ class LinkController < ApplicationController
 
   		debugLog params
   		
-  		@results = @results.where('lower(name) ILIKE :search OR lower(url) ILIKE :search', search:"%#{params[:text].downcase}%") if !params[:text].nil? and !(params[:text] == "")
+  		@results = @results.where('lower(name) ILIKE :search OR lower(url) ILIKE :search OR lower(description) ILIKE :search', search:"%#{params[:text].downcase}%") if !params[:text].nil? and !(params[:text] == "")
   		@results = @results.where({region_id: params[:region_id]}) if !params[:region_id].nil? and !(params[:region_id] == "")
   		@results = @results.joins(:folders).where('folder_id = ?', params[:folder_id]) if !params[:folder_id].nil? and !(params[:folder_id] == "")
 

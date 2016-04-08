@@ -4,29 +4,45 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <style>
+	nav {
+		background-color: #7A6AAA !important;
+    color: white;
+		border-radius: 0px !important;
+		border: none !important;
+		box-shadow: 0px 3px 5px rgba(0,0,0,0.9);
+	}
+
+	.navbar .container-fluid {
+    margin: 5px;
+	}
+
+	.navbar-default .navbar-nav>li>a {
+		color:white;
+		margin-left:5px;
+	}
+
 	.navbar-header img{
-		width:40px;
 		height:40px;
 		display:inline;
 
 		position:relative;
-		top:-10px;
 		left:-7px;
-	}
-
-	.navbar-header span{
-		position:relative;
-		top:-10px;
 	}
 	
 	.add_button {
-		background-color: #222222 !important;
-
-		color:white !important;
-		font-weight: bold !important;
-		border: 3px solid black;
-
 		text-align: center;
+
+		background-color: #5AB9E6;
+    color: #1A93CC;
+    font-size: 30px;
+    font-weight: bold;
+    height:56px;
+    width:56px;
+	}
+	
+	.add_button:hover {
+		background-color: #5AB9E6 !important;
+    color: #1A93CC !important;
 	}
 
 	.navbar-header {
@@ -53,8 +69,7 @@
 	}
 
 	.main {
-		background-image: url("img/NMI_Artwork.jpg");
-		padding: 58px 0 0 0;
+		padding: 77px 0 0 0;
 	}
 
 	table {
@@ -63,12 +78,28 @@
 
 	.article_link {
 		background-color: rgba(255,255,255,0.8);
-    padding: 5px 0 10px 0;
-    height: 50px;
-    width: 100%;
-    margin-bottom: 10px;
+	  padding: 5px 0 10px 0;
+	  height: 50px;
+	  width: 100%;
+	  margin-bottom: 10px;
 	}
 
+	.filter_button {
+		border: #5AB9E6 3px solid;
+	}
+	
+	.filter_button:hover {
+		background-color:#49A3CE !important;
+		color:black !important;
+		border: #5AB9E6 3px solid;
+	}
+	
+	.filter_button.active {
+		background-color:#5AB9E6 !important;
+		color:black !important;
+		border: #5AB9E6 3px solid;
+	}
+	
 </style>
 </head>
 
@@ -77,22 +108,22 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-    	<a href="#" class="navbar-brand"><img src="img/favicon.png" alt=""><span>NMI WESearcher</span></a>
+    	<a href="#" class="navbar-brand"><img src="img/wesearch_logo.png" alt=""></a>
     </div>
 
 		<ul class="nav navbar-nav navbar-right">
-	  	<li> <a class="active" href="#">Culture</a> </li>
-	  	<li> <a href="#">Marketing</a> </li>
-	  	<li> <a href="#">Education</a> </li>
-	  	<li> <a href="#">Talent</a> </li>
-	  	<li> <a href="#" class="add_button">+</a> </li>
+	  	<li> <a class="filter_button active" href="#">Culture</a> </li>
+	  	<li> <a class="filter_button" href="#">Marketing</a> </li>
+	  	<li> <a class="filter_button" href="#">Education</a> </li>
+	  	<li> <a class="filter_button" href="#">Talent</a> </li>
+	  	<li> <a class="add_button" href="#" >+</a> </li>
 		</ul>
 	</div>
 </nav>
 
 <div class="row main_container">
   <div class="col-md-3 sidebar">
-  	
+  	<img src="" alt="">
   </div>
 
   <div class="col-md-9 main">

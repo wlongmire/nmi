@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20160407033947) do
 
   create_table "folders", force: :cascade do |t|
     t.string   "title"
-    t.text     "desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "folders_links", id: false, force: :cascade do |t|
@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 20160407033947) do
   create_table "links", force: :cascade do |t|
     t.string   "url"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "name"
-    t.string   "desc"
+    t.text     "description"
     t.integer  "region_id"
     t.string   "img"
     t.string   "favicon"
