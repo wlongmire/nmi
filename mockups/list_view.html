@@ -51,10 +51,14 @@
     font-weight: bold;
     height:56px;
     width:56px;
+
+    opacity:0.8;
 	}
 	
 	.add_button:hover {
-		
+		background-color: white !important;
+    color: black !important;
+   	opacity:1;
 	}
 
 	.navbar-header {
@@ -75,6 +79,11 @@
 		padding: 90px 0 0 0;
 		border-right: 3px #ddd solid;
 		border-left: 3px #ddd solid;
+	
+		background: rgb(255,255,255); /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */
+	 /* background: -webkit-linear-gradient(rgba(255,255,255,1) 0%, rgba(206,206,206,1) 100%);
+	  background: -o-linear-gradient(rgba(255,255,255,1) 0%, rgba(206,206,206,1) 100%);
+	  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(206,206,206,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */*/
 	}
 
 	.main {
@@ -224,6 +233,21 @@
 		padding-bottom:5px;
 	}
 
+	ul.region_list {
+		padding-bottom:15px;
+	}
+
+	.logout_button {
+		padding:10px !important;
+		background-color: #7A6AAA !important;
+		color:white !important;
+		font-weight: bold;
+	}
+	
+	.logout_button:hover {
+		color:black !important;
+	}
+
 	.person_icon {
 		width: 40px;
 	}
@@ -270,7 +294,9 @@
 
 	.more_tag:hover {
 		opacity:1;
+		color: black;
 		bottom:0px;
+		cursor:pointer
 	}
 </style>
 </head>
@@ -314,7 +340,7 @@
   				<li><a href="#">LATAM</a></li>
   			</ul>
   		</li>
-
+			<li><a href="#" class="logout_button">Logout</a></li>
   	</ul>
   </div>
 
