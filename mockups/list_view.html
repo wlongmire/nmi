@@ -4,6 +4,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <style>
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
 	nav {
 		background-color: #7A6AAA !important;
     color: white;
@@ -68,7 +73,7 @@
 		height:100%;
 	}
 
-	.main {
+	.main, .sidebar {
 		padding: 77px 0 0 0;
 	}
 
@@ -78,10 +83,14 @@
 
 	.article_link {
 		background-color: rgba(255,255,255,0.8);
-	  padding: 5px 0 10px 0;
-	  height: 50px;
+	  padding: 20px;
 	  width: 100%;
 	  margin-bottom: 10px;
+	}
+	
+	.article_link .favicon {
+		width:60px;
+		height:60px;
 	}
 
 	.filter_button {
@@ -99,7 +108,65 @@
 		color:black !important;
 		border: #5AB9E6 3px solid;
 	}
+
+	ul.menu_list, ul.region_list {
+		list-style: none;
+	}
 	
+	ul.menu_list a {
+		font-size:20px;
+	}
+	
+	ul.menu_list li {
+		
+	}
+
+	.person_icon {
+		width: 40px;
+	}
+
+	/*article link*/
+	.title {
+		margin:0px;
+		font-size: 30px;
+	}
+
+	.description {
+
+	}
+
+	.website {
+
+	}
+	
+	.edit_icon {
+		width: 40px;
+	}
+
+	.share_dropdown {
+		font-size: 13px;
+    text-transform: uppercase;
+    padding: 11px;
+    background: #7A6AAA;
+    color: white;
+    letter-spacing: 1px;
+	}
+
+	.more_tag {
+		position: absolute;
+    padding: 20px 100px;
+    background-color: #7A6AAA;
+    text-align: center;
+    z-index: 999;
+    bottom: 0;
+    left: 37%;
+    color: white;
+    font-size: 18px;
+    opacity: 0.8;
+    border-radius: 2px;
+    font-weight: bold;
+    box-shadow: 0px -2px 5px rgba(0,0,0,0.8);
+	}
 </style>
 </head>
 
@@ -123,28 +190,136 @@
 
 <div class="row main_container">
   <div class="col-md-3 sidebar">
-  	<img src="" alt="">
+  	<ul class="menu_list">
+  		<li><a href="#">wlongmire</a></li>
+  		<li><a href="#">Main Feed</a></li>
+  		<li><a href="#">Recommended</a></li>
+  		<li><a href="#">Posted</a></li>
+  		<li>
+  			<span>By Region</span>
+  			<ul class="region_list">
+  				<li><a href="#">Global</a></li>
+  				<li><a href="#">APAC</a></li>
+  				<li><a href="#">EMEA</a></li>
+  				<li><a href="#">NA</a></li>
+  				<li><a href="#">LATAM</a></li>
+  			</ul>
+  		</li>
+
+  	</ul>
   </div>
 
   <div class="col-md-9 main">
   	<div class="article_link">
-  		
+  		<div class="row">
+  			<div class="col-md-1">
+  				<img class="favicon" src="img/favicon.png" alt="">				
+  			</div>
+
+  			<div class="col-md-8">
+	  			<p class="title"><a href="#">Title of the Article</a></p>
+	  			<p class="description">This is the beginning of the description...</p>
+	  			<p class="website"><a href="#">nytimes.com</a></p>
+  			</div>
+  			
+  			<div class="col-md-2">
+  				
+  				<div>
+  					<a href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+	  				<a href="#" class="share_dropdown">Share</a>
+  				</div>
+  				
+  				<div>
+  						<a href="#"><img class="person_icon" src="img/person.png" alt="">safiyaM</a>
+  				</div>
+  			</div>
+  		</div>
+  
   	</div>
 
   	<div class="article_link">
-  		
+  		<div class="row">
+  			<div class="col-md-1">
+  				<img class="favicon" src="img/favicon.png" alt="">				
+  			</div>
+
+  			<div class="col-md-8">
+	  			<p class="title"><a href="#">Title of the Article</a></p>
+	  			<p class="description">This is the beginning of the description...</p>
+	  			<p class="website"><a href="#">nytimes.com</a></p>
+  			</div>
+  			
+  			<div class="col-md-2">
+  				
+  				<div>
+  					<a href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+	  				<a href="#" class="share_dropdown">Share</a>
+  				</div>
+  				
+  				<div>
+  						<a href="#"><img class="person_icon" src="img/person.png" alt="">safiyaM</a>
+  				</div>
+  			</div>
+  		</div>
+  
   	</div>
 
   	<div class="article_link">
-  		
+  		<div class="row">
+  			<div class="col-md-1">
+  				<img class="favicon" src="img/favicon.png" alt="">				
+  			</div>
+
+  			<div class="col-md-8">
+	  			<p class="title"><a href="#">Title of the Article</a></p>
+	  			<p class="description">This is the beginning of the description...</p>
+	  			<p class="website"><a href="#">nytimes.com</a></p>
+  			</div>
+  			
+  			<div class="col-md-2">
+  				
+  				<div>
+  					<a href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+	  				<a href="#" class="share_dropdown">Share</a>
+  				</div>
+  				
+  				<div>
+  						<a href="#"><img class="person_icon" src="img/person.png" alt="">safiyaM</a>
+  				</div>
+  			</div>
+  		</div>
+  
   	</div>
 
   	<div class="article_link">
-  		
+  		<div class="row">
+  			<div class="col-md-1">
+  				<img class="favicon" src="img/favicon.png" alt="">				
+  			</div>
+
+  			<div class="col-md-8">
+	  			<p class="title"><a href="#">Title of the Article</a></p>
+	  			<p class="description">This is the beginning of the description...</p>
+	  			<p class="website"><a href="#">nytimes.com</a></p>
+  			</div>
+  			
+  			<div class="col-md-2">
+  				
+  				<div>
+  					<a href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+	  				<a href="#" class="share_dropdown">Share</a>
+  				</div>
+  				
+  				<div>
+  						<a href="#"><img class="person_icon" src="img/person.png" alt="">safiyaM</a>
+  				</div>
+  			</div>
+  		</div>
+  
   	</div>
 
-  	<div class="article_link">
-  		
+  	<div class="more_tag">
+  		<span>SEE MORE</span>
   	</div>
   </div>
 </div>
