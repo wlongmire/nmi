@@ -17,13 +17,17 @@
 		box-shadow: 0px 3px 5px rgba(0,0,0,0.9);
 	}
 
+	.row {
+		margin-right: 0px;
+    margin-left: 0px;
+	}
+
 	.navbar .container-fluid {
     margin: 5px;
 	}
 
 	.navbar-default .navbar-nav>li>a {
 		color:white;
-		margin-left:5px;
 	}
 
 	.navbar-header img{
@@ -36,9 +40,13 @@
 	
 	.add_button {
 		text-align: center;
+		
+		margin-left: 30px;
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.9);
+    border-radius: 3px;
 
-		background-color: #5AB9E6;
-    color: #1A93CC;
+		background-color: white;
+    color: black !important;
     font-size: 30px;
     font-weight: bold;
     height:56px;
@@ -46,21 +54,11 @@
 	}
 	
 	.add_button:hover {
-		background-color: #5AB9E6 !important;
-    color: #1A93CC !important;
+		
 	}
 
 	.navbar-header {
 		padding:0;
-	}
-
-	.sidebar {
-		
-	}
-
-	.main {
-		background-color: #eeeeee;
-		background: url("img/texture.png") repeat right top;
 	}
 
 	.navbar {
@@ -69,17 +67,20 @@
     width: 100%;
 	}
 	
-
 	.main_container, .sidebar, .main {
 		height:100%;
 	}
-
-	.main {
-		padding: 80px 10 0 10;
-	}
 	
 	.sidebar {
-		padding: 84px 0 0 0;
+		padding: 90px 0 0 0;
+		border-right: 3px #ddd solid;
+		border-left: 3px #ddd solid;
+	}
+
+	.main {
+		background-color: #eeeeee;
+		background: url("img/texture.png") repeat right top;
+		padding: 80px 10 0 10;
 	}
 
 	table {
@@ -91,73 +92,101 @@
 	  padding: 20px;
 	  width: 100%;
 	  margin-bottom: 10px;
-
+		
+		opacity:0.8;
 	  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-  	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 	}
 
 	.article_link:hover {
+		opacity:1;
 		box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 		transform: scale(1.05, 1.05);
 	}
 	
-	.article_link .favicon {
+	.article_link .article_icon {
+		text-align: center;
+	}
+
+	.article_link .article_icon img {
 		width:80px;
 		height:80px;
+
+		position:relative;
+		left:-15px;
+	}
+
+	.article_link .article_editor, .article_link .article_poster {
+		position: absolute;
+    right: -20px;
+	}
+
+	.article_link .article_editor {
+	  top: -23px;
+  }
+
+	.article_link .article_poster {
+		position: absolute;
+    bottom: -16px;
+  }
+
+  .article_link .article_content {
+		position:relative;
+		top: 6px;
+    left: -18px;
+	}
+	
+	#article_culture {
+		border-left: 8px #90284D solid;
+	}
+
+	#article_marketing {
+		border-left: 8px #a94442 solid;
+	}
+	
+	#article_education {
+		border-left: 8px #284290 solid;
+	}
+	
+	#article_talent {
+		border-left: 8px #28902D solid;
+	}
+	
+	#education {
+		background-color: #284290 !important;
+	}
+
+	#culture {
+		background-color: #90284D !important;
+	}
+
+	#talent {
+		background-color: #28902D !important;
+	}
+
+	#marketing {
+		background-color: #a94442 !important;
 	}
 
 	.filter_button {
-		border: #5AB9E6 3px solid;
+		padding:18px !important;
+		font-weight: bold;
+		background-color:#49A3CE !important;
+		color:white !important;
+		opacity:0.3;
 	}
 	
 	.filter_button:hover {
-		background-color:#49A3CE !important;
-		color:black !important;
-		border: #5AB9E6 3px solid;
+		opacity:0.7;
+
 	}
 	
 	.filter_button.active {
-		background-color:#5AB9E6 !important;
+		opacity:1;
 		color:black !important;
-		border: #5AB9E6 3px solid;
 	}
 
-	ul.menu_list, ul.region_list {
-		list-style: none;
-	}
-	
-	ul.menu_list a {
-		font-size:20px;
-	}
-	
-	ul.menu_list li {
-		
-	}
-
-	.person_icon {
-		width: 40px;
-	}
-
-	/*article link*/
-	.title {
-		margin:0px;
-		font-size: 20px;
-	}
-
-	.description {
-
-	}
-
-	.website {
-
-	}
-	
-	.edit_icon {
-		width: 22px;
-    background-color: #7A6AAA;
-	}
-
-	.share_dropdown {
+	.article_button {
     font-size: 9px;
     font-weight: bold;
     text-transform: uppercase;
@@ -167,29 +196,81 @@
     letter-spacing: 1px;
 	}
 
-	.share_dropdown:hover {
+	.article_button:hover {
     text-decoration: none;
     color:black;
 	}
 
+	ul.menu_list {
+		margin-top:8px;
+	}
+
+	ul.menu_list, ul.region_list {
+		list-style: none;
+	}
+	
+	ul.menu_list a {
+		font-size:15px;
+		padding:8px;
+	}
+
+	ul.menu_list a:hover {
+		background-color: #5EACDD;
+		color:white;
+		text-decoration: none;
+	}
+	
+	ul.menu_list li {
+		padding-bottom:5px;
+	}
+
+	.person_icon {
+		width: 40px;
+	}
+
+	/*article link*/
+	.title {
+		margin:0px;
+		font-size: 16px;
+    font-weight: bold;
+	}
+
+	.description {
+		font-size: 12px;
+    min-height: 35px;
+	}
+
+	.website {
+		position:relative;
+		top:10px;
+	}
+	
+	.edit_icon {
+		width: 32px;
+	}
 
 	.more_tag {
 		position: absolute;
-    padding: 20px 100px;
+    padding: 10px 80px;
     background-color: #7A6AAA;
     text-align: center;
     z-index: 999;
-    bottom: 0;
+    
     left: 37%;
     color: white;
-    font-size: 18px;
+    font-size: 13px;
     border-radius: 2px;
     font-weight: bold;
     box-shadow: 5px 4px 5px rgba(0,0,0,0.5);
+
+    opacity:0.7;
+    bottom: -8px;
+    transition: bottom 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 	}
 
 	.more_tag:hover {
-		color:black;
+		opacity:1;
+		bottom:0px;
 	}
 </style>
 </head>
@@ -203,26 +284,29 @@
     </div>
 
 		<ul class="nav navbar-nav navbar-right">
-	  	<li> <a class="filter_button active" href="#">All</a> </li>
-	  	<li> <a class="filter_button" href="#">Culture</a> </li>
-	  	<li> <a class="filter_button" href="#">Marketing</a> </li>
-	  	<li> <a class="filter_button" href="#">Education</a> </li>
-	  	<li> <a class="filter_button" href="#">Talent</a> </li>
-	  	<li> <a class="add_button" href="#" >+</a> </li>
+	  	<li> <a id="all" class="filter_button active" href="#">All</a> </li>
+	  	<li> <a id="culture" class="filter_button" href="#">Culture</a> </li>
+	  	<li> <a id="marketing" class="filter_button" href="#">Marketing</a> </li>
+	  	<li> <a id="education" class="filter_button" href="#">Education</a> </li>
+	  	<li> <a id="talent" class="filter_button" href="#">Talent</a> </li>
+	  	<li> <a id="all" class="add_button" href="#" >+</a> </li>
 		</ul>
 	</div>
 </nav>
 
 <div class="row main_container">
   <div class="col-md-3 sidebar">
+		
+		<span style="margin-left:40px; padding: 8px; font-weight: bold; text-transform: uppercase;">Welcome wlongmire</span>
+  		
   	<ul class="menu_list">
-  		<li><a href="#">wlongmire</a></li>
+  		<li><a href="#">Your Profile</a></li>
   		<li><a href="#">Main Feed</a></li>
-  		<li><a href="#">Recommended</a></li>
+  		<li><a href="#">Shared With You</a></li>
   		<li><a href="#">Posted</a></li>
-  		<li>
-  			<span>By Region</span>
-  			<ul class="region_list">
+  		<li style="margin-top:10px">
+  			<span style="padding: 8px; font-weight: bold; text-transform: uppercase;">By Region:</span>
+  			<ul style="margin-top:8px;" class="region_list">
   				<li><a href="#">Global</a></li>
   				<li><a href="#">APAC</a></li>
   				<li><a href="#">EMEA</a></li>
@@ -239,118 +323,152 @@
   	<div class="row">
   		<div class="col-md-6">
 
-  			<div class="article_link">
+  			<div class="article_link" id="article_culture">
 		  		<div class="row">
-		  			<div class="col-md-3">
-		  				<img class="favicon" src="img/favicon.png" alt="">				
+		  			<div class="col-md-3 article_icon">
+		  				<a href="#"><img src="img/favicon.png" alt=""></a>
 		  			</div>
 
-		  			<div class="col-md-6">
-			  			<p class="title"><a href="#">Title of the Article</a></p>
-			  			<p class="description">This is the beginning of the description...</p>
-			  			<p class="website"><a href="#">nytimes.com</a></p>
-		  			</div>
-		  			
-		  			<div class="col-md-3">
+		  			<div class="col-md-9">
+
+		  				<div class="article_content">
+		  					<p class="title"><a href="#">Title of the Article That is is is is is</a></p>
+			  				<p class="description">This is the beginning of the thing thing thing thing</p>
+			  				<p class="website"><a href="#">nytimes.com</a></p>
 		  				
-		  				<div>
-		  					<a href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
-			  				<a href="#" class="share_dropdown">Share</a>
+		  				</div>
+			  			
+		  				<div class="article_editor">
+		  					<a class="article_button" href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+			  				<a href="#" class="article_button">Share</a>
 		  				</div>
 		  				
-		  				<div>
-		  						<a href="#">wlongmire</a>
+		  				<div class="article_poster">
+		  					<a href="#" class="article_button">wlongmire</a>
 		  				</div>
+
 		  			</div>
 		  		</div>
 		  
 		  	</div>
-
-		  	 <div class="article_link">
+				
+				<div class="article_link" id="article_marketing">
 		  		<div class="row">
-		  			<div class="col-md-3">
-		  				<img class="favicon" src="img/favicon.png" alt="">				
+		  			<div class="col-md-3 article_icon">
+		  				<img src="img/favicon.png" alt="">				
 		  			</div>
 
-		  			<div class="col-md-6">
-			  			<p class="title"><a href="#">Title of the Article</a></p>
-			  			<p class="description">This is the beginning of the description...</p>
-			  			<p class="website"><a href="#">nytimes.com</a></p>
-		  			</div>
-		  			
-		  			<div class="col-md-3">
+		  			<div class="col-md-9">
+
+		  				<div class="article_content">
+		  					<p class="title"><a href="#">Title of the Article That is is is is is</a></p>
+			  				<p class="description">This is the beginning of the thing thing thing thing</p>
+			  				<p class="website"><a href="#">nytimes.com</a></p>
 		  				
-		  				<div>
-		  					<a href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
-			  				<a href="#" class="share_dropdown">Share</a>
+		  				</div>
+			  			
+		  				<div class="article_editor">
+		  					<a class="article_button" href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+			  				<a href="#" class="article_button">Share</a>
 		  				</div>
 		  				
-		  				<div>
-		  						<a href="#">wlongmire</a>
+		  				<div class="article_poster">
+		  					<a href="#" class="article_button">wlongmire</a>
 		  				</div>
+
 		  			</div>
 		  		</div>
 		  
 		  	</div>
-		  	
-  		</div>
-
+			</div>
   		<div class="col-md-6">
 
-  			 <div class="article_link">
+				<div class="article_link" id="article_talent">
 		  		<div class="row">
-		  			<div class="col-md-3">
-		  				<img class="favicon" src="img/favicon.png" alt="">				
+		  			<div class="col-md-3 article_icon">
+		  				<img src="img/favicon.png" alt="">				
 		  			</div>
 
-		  			<div class="col-md-6">
-			  			<p class="title"><a href="#">Title of the Article</a></p>
-			  			<p class="description">This is the beginning of the description...</p>
-			  			<p class="website"><a href="#">nytimes.com</a></p>
-		  			</div>
-		  			
-		  			<div class="col-md-3">
+		  			<div class="col-md-9">
+
+		  				<div class="article_content">
+		  					<p class="title"><a href="#">Title of the Article That is is is is is</a></p>
+			  				<p class="description">This is the beginning of the thing thing thing thing</p>
+			  				<p class="website"><a href="#">nytimes.com</a></p>
 		  				
-		  				<div>
-		  					<a href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
-			  				<a href="#" class="share_dropdown">Share</a>
+		  				</div>
+			  			
+		  				<div class="article_editor">
+		  					<a class="article_button" href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+			  				<a href="#" class="article_button">Share</a>
 		  				</div>
 		  				
-		  				<div>
-		  						<a href="#">wlongmire</a>
+		  				<div class="article_poster">
+		  					<a href="#" class="article_button">wlongmire</a>
 		  				</div>
+
 		  			</div>
 		  		</div>
 		  
 		  	</div>
-
-		  	<div class="article_link">
+				
+				<div class="article_link" id="article_education">
 		  		<div class="row">
-		  			<div class="col-md-3">
-		  				<img class="favicon" src="img/favicon.png" alt="">				
+		  			<div class="col-md-3 article_icon">
+		  				<img src="img/favicon.png" alt="">				
 		  			</div>
 
-		  			<div class="col-md-6">
-			  			<p class="title"><a href="#">Title of the Article</a></p>
-			  			<p class="description">This is the beginning of the description...</p>
-			  			<p class="website"><a href="#">nytimes.com</a></p>
-		  			</div>
-		  			
-		  			<div class="col-md-3">
+		  			<div class="col-md-9">
+
+		  				<div class="article_content">
+		  					<p class="title"><a href="#">Title of the Article That is is is is is</a></p>
+			  				<p class="description">This is the beginning of the thing thing thing thing</p>
+			  				<p class="website"><a href="#">nytimes.com</a></p>
 		  				
-		  				<div>
-		  					<a href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
-			  				<a href="#" class="share_dropdown">Share</a>
+		  				</div>
+			  			
+		  				<div class="article_editor">
+		  					<a class="article_button" href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+			  				<a href="#" class="article_button">Share</a>
 		  				</div>
 		  				
-		  				<div>
-		  						<a href="#">wlongmire</a>
+		  				<div class="article_poster">
+		  					<a href="#" class="article_button">wlongmire</a>
 		  				</div>
+
 		  			</div>
 		  		</div>
 		  
 		  	</div>
+				
+				<div class="article_link" id="article_culture">
+		  		<div class="row">
+		  			<div class="col-md-3 article_icon">
+		  				<img src="img/favicon.png" alt="">				
+		  			</div>
 
+		  			<div class="col-md-9">
+
+		  				<div class="article_content">
+		  					<p class="title"><a href="#">Title of the Article That is is is is is</a></p>
+			  				<p class="description">This is the beginning of the thing thing thing thing</p>
+			  				<p class="website"><a href="#">nytimes.com</a></p>
+		  				
+		  				</div>
+			  			
+		  				<div class="article_editor">
+		  					<a class="article_button" href="#"><img class="edit_icon" src="img/edit.png" alt=""></a>
+			  				<a href="#" class="article_button">Share</a>
+		  				</div>
+		  				
+		  				<div class="article_poster">
+		  					<a href="#" class="article_button">wlongmire</a>
+		  				</div>
+
+		  			</div>
+		  		</div>
+		  
+		  	</div>
   	</div>
 
   	<div class="more_tag">
