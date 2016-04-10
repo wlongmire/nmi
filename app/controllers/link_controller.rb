@@ -75,23 +75,23 @@ class LinkController < ApplicationController
   
   # PATCH/PUT /folders/1
   def update
-	  link = Link.find(params[:id])
-		link.name = params[:link][:name]
-		link.url = params[:link][:url]
-		link.description = params[:link][:description]
-		link.region_id = params[:link][:region_id]
+	link = Link.find(params[:id])
+	link.name = params[:link][:name]
+	link.url = params[:link][:url]
+	link.description = params[:link][:description]
+	link.region_id = params[:link][:region_id]
 
-		link.folders = []
-		#collect folders
-		folders_models = collect_folders params[:link][:folders]
-		folders_models.each { |f| link.folders.push(f) }
+	link.folders = []
+	#collect folders
+	folders_models = collect_folders params[:link][:folders]
+	folders_models.each { |f| link.folders.push(f) }
 
-		link.followers = []
-	
-		#collect folders
-		followers_models = collect_followers params[:link][:followers]
+	link.followers = []
 
-		followers_models.each { |f| link.followers.push(f) }
+	#collect folders
+	followers_models = collect_followers params[:link][:followers]
+
+	followers_models.each { |f| link.followers.push(f) }
 
 	  if link.save
 	    flash[:success] = "Successfully Created."
@@ -101,7 +101,14 @@ class LinkController < ApplicationController
 	    end
 		  
  	end
-  
+  	
+  	def add_share
+
+  	end
+
+  	def remove_share
+
+  	end
 
   	def search
   		@results = Link.all
