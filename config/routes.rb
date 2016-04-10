@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   get     "user/:user_name/edit",           to: "user#edit",        as: 'edit_user'
   put     "user",                           to: "user#update"
+  
   put     "user/follow/:link_id",           to: "user#follow",      as: 'user_follow'
   put     "user/unfollow/:link_id",         to: "user#unfollow",    as: 'user_unfollow'
   

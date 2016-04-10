@@ -1,11 +1,38 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
+      <a href="#" class="navbar-brand">
+        <%= image_tag "wesearch_logo.png" %>
+      </a>
+    </div>
+  
+    <%if user_signed_in? %>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li> <a id="all" class="filter_button active" href="#">All</a> </li>
+      <% Folder.all.each do |f| %>
+        <li> 
+          <a id="<%= f.title.downcase %>" class="filter_button" href="#"><%= f.title %></a> 
+        </li>
+      <% end %>
+      <li> 
+        <%= link_to "+", new_link_path, {class:"add_button"}%>
+      </li>
+    </ul>
+
+    <% end %>
+  </div>
+</nav>
+
+<!-- <div class="alert notice alert-warning" role="alert"><%= alert %></div>
+ -->  
+<!-- <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
       <%= link_to "NMI Researcher", root_path, {class:"navbar-brand"} %>
     </div>
 
-	<%if user_signed_in? %>
-
+	  
     <ul class="nav navbar-nav navbar-right">
     	
       <li> <%= link_to "Add Article", new_link_path %> </li>
@@ -22,6 +49,5 @@
 		  </li>
     </ul>
 
-    <% end %>
   </div>
-</nav>
+</nav> -->

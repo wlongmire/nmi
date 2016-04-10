@@ -1,0 +1,45 @@
+<div class="article_link" id="article_<%= link.folders.first.title.downcase if (link.folders.length > 0) %>">
+  <div class="row">
+    <div class="col-md-3 article_icon">
+
+      <a href="#">
+      	<%if link.favicon.nil? %>
+					<%= image_tag "favicon.png" %>
+				<%else%>
+					<%= image_tag link.favicon, {class:"fav"} %>
+				<%end%>
+      </a>
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="article_content">
+        <p class="title"><%= link_to link.name[0, 50], link.url, {target: "_blank"} %></p>
+        <p class="description"><%=link.description[0, 100]%></p>
+
+        <% base_url = link.url[/.*.com|.org|.co|.edu|.gov|.int|.mil|.net|.org/] %>
+        <p class="website"><%=link_to base_url, base_url, {target: "_blank"} %></p>
+      
+      </div>
+      
+      <div class="article_editor">
+        <%= link_to "DETAILS", link_path(link.id), {class:"article_button"} %>
+        <a href="#" class="share_button article_button">Share</a>
+      </div>
+      
+      <div class="article_poster">
+        <a href="#" class="article_button">
+        	<%= 
+					if (!link.user.nil?)
+						(current_user == link.user)? "You" : link.user.username 
+					else
+						"No User Specified"
+					end
+					%>
+				</a>
+      </div>
+
+    </div>
+
+  </div>
+</div>

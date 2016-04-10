@@ -6,26 +6,26 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
 </head>
 
 <body>
 
 	<%= render :partial => '/layouts/header'%>
-	<div class="alert notice alert-warning" role="alert"><%= alert %></div>
-  
-  
-	<div class="container">
-    <%if user_signed_in? %>
-      <h3>Welcome <%= link_to current_user.username, user_path%></h3>
-    <%end%>
-    
-    
-		<%= yield %>
-	</div>
 
-  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <%if user_signed_in? %>
+  <!-- Don't display sidebar if signing in or creating a new account -->
+    <div class="col-md-3 sidebar">
+      <%= render :partial =>'/layouts/sidebar' %>
+    </div>
+  <% end %>
+
+  <div class="col-md-9 main">
+    <%= yield %>
+  </div>
+  
+
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   
 </body>

@@ -1,24 +1,22 @@
-<% if @links.length > 0 %>
+<div class="row">
+	<div class="col-md-6">
+		<% @links.each_with_index do |l, idx| %>
+			<%= render :partial => 'article', :locals => {:link => l} if idx%2 == 0%>
+		<% end %>
+	</div>
 
-<table class="table">
-	<tr>
-		<td>Title</td>
-		<td>Posted By</td>
-		<td>Region</td>
-		<td>Folders</td>
-		<td>Actions</td>
-	</tr>
+	<div class="col-md-6">
+		<% @links.each_with_index do |l, idx| %>
+			<%= render :partial => 'article', :locals => {:link => l} if idx%2 == 1%>
+		<% end %>
+	</div>
+
+	<!--    <div class="move_tag up_tag">
+	<span>MOVE UP</span>
+	</div>
+
+	<div class="move_tag down_tag">
+	<span>MOVE DOWN</span>
+	</div> -->
 	
-	
-	<% @links.each do |l| %>
-	
-	<tr> <%= render 'linkRow', :locals => {:link => l} %> </tr>
-
-	<% end %>
-</table>
-
-<% else %>
-
-	<h2>No Articles <%= @type.capitalize %> By This User</h2>
-
-<% end %>
+</div>

@@ -31,14 +31,14 @@
   </div>
 
   <div class="field">
-    <h4>Folder:</h4>
+    <h4>Category:</h4>
     <%= f.select(:folders, Folder.all.collect {|p| [ p.title, p.id ] },
         { prompt:""}, 
         { multiple:true, size: (Folder.all.length+1), class:"form-control" }) %>
   </div>
   
   <div class="field">
-    <h4>Followers:</h4>
+    <h4>Shared With:</h4>
     <%= f.select(:followers, User.all.collect {|u| [ u.username, u.id ] },
         { prompt:""}, 
         { multiple:true, size: (User.all.length+1), class:"form-control" }) %>

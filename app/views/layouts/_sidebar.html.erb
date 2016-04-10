@@ -1,0 +1,21 @@
+<span style="margin-left:40px; padding: 8px; font-weight: bold; text-transform: uppercase;">Welcome <%= current_user.username%></span>
+  
+<ul class="menu_list">
+  <li><%= link_to "Main Feed", links_path(:all)%></li>
+  <li><%= link_to "Shared With You", links_path(:shared)%></li>
+  <li><%= link_to "Posted By You", links_path(:posted)%></li>
+  
+  <li style="margin-top:10px">
+    <span style="padding: 8px; font-weight: bold; text-transform: uppercase;">By Region:</span>
+    <ul style="margin-top:8px;" class="region_list">
+      <li><a href="#">Global</a></li>
+      <li><a href="#">APAC</a></li>
+      <li><a href="#">EMEA</a></li>
+      <li><a href="#">NA</a></li>
+      <li><a href="#">LATAM</a></li>
+    </ul>
+  </li>
+  <li>
+    <%= link_to "Logout", destroy_user_session_path, {method: :delete, class:"logout_button"} %>
+  </li>
+</ul>

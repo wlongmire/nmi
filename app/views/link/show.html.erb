@@ -16,7 +16,7 @@
 		<h3>Region:</h3>
 		<span class="label label-default"><%= (@link.region.nil?)? "No Region Selected" : @link.region.name %></span>
 
-		<h3>Folders</h3>
+		<h3>Categories</h3>
 		<div id="folders_container">
 			<% @link.folders.each do |folder| %>
 			<span class="label label-info"><%= folder.title %></span>
@@ -32,10 +32,10 @@
 			<% end %>
 		</div>
 
-		<h3>Followers</h3>
+		<h3>Shared With</h3>
 		<div id="followers_container">
 			<% if @link.followers.length == 0 %>
-				<p>No Followers</p>
+				<p>Not Currently Shared</p>
 			<% else %>
 				<% @link.followers.each do |f| %>
 					<span class="label label-default"><%= f.username %></span>
