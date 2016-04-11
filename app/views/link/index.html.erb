@@ -1,22 +1,23 @@
 <div class="row">
-	<div class="col-md-6">
-		<% @links.each_with_index do |l, idx| %>
-			<%= render :partial => 'article', :locals => {:link => l} if idx%2 == 0%>
-		<% end %>
-	</div>
+	<% if (@links.length > 0) %>
+	
 
-	<div class="col-md-6">
-		<% @links.each_with_index do |l, idx| %>
-			<%= render :partial => 'article', :locals => {:link => l} if idx%2 == 1%>
-		<% end %>
-	</div>
+		<div class="col-md-6">
+			<% @links.each_with_index do |l, idx| %>
+				<%= render :partial => 'article', :locals => {:link => l} if idx%2 == 0%>
+			<% end %>
+		</div>
 
-	<!--    <div class="move_tag up_tag">
-	<span>MOVE UP</span>
-	</div>
+		<div class="col-md-6">
+			<% @links.each_with_index do |l, idx| %>
+				<%= render :partial => 'article', :locals => {:link => l} if idx%2 == 1%>
+			<% end %>
+		</div>
 
-	<div class="move_tag down_tag">
-	<span>MOVE DOWN</span>
-	</div> -->
+	<% else %>
+		
+		<h3 style="text-align: center">No articles are avalible for this search criteria.</h3>
+
+	<% end %>
 	
 </div>

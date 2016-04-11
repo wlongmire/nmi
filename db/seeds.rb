@@ -6,8 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-regions = ["Global", "New York", "San Francisco", "Chicago", "Madrid"]
-folders = [{title:"Culture", description:"Cultural Implications in Education Globally"}, {title:"Industry", description:"Programmatic Emerging Market Trends"}, {title:"Education", description:"Technology’s Role in Education’s Scale"}, {title:"Talent", description:"The Future of Digital Talent"}]
+regions = ["global", "new york", "san francisco", "chicago", "madrid"]
+
+folders = [{title:"culture", description:"Cultural Implications in Education Globally"}, {title:"industry", description:"Programmatic Emerging Market Trends"}, {title:"education", description:"Technology’s Role in Education’s Scale"}, {title:"talent", description:"The Future of Digital Talent"}]
 
 Region.destroy_all
 Folder.destroy_all

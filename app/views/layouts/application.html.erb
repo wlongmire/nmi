@@ -15,7 +15,6 @@
 	<%= render :partial => '/layouts/header'%>
 
   <%if user_signed_in? %>
-  <!-- Don't display sidebar if signing in or creating a new account -->
     <div class="col-md-3 sidebar">
       <%= render :partial =>'/layouts/sidebar' %>
     </div>

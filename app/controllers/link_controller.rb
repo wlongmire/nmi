@@ -7,19 +7,33 @@ class LinkController < ApplicationController
 	def index
 		#shows all or by user
 		#also handles follow types
-		user_name = (params.has_key? (:user_name)) ? params[:user_name] : current_user.username
-		@type = (params.has_key? (:type)) ? params[:type] : :all
+		type = params[:type] || :all
+		value = params[:value]
 
-		case @type
-			when "posted"
-				user = User.find_by({username: user_name})
-				@links = Link.where({user:user})
-			when "followed"
-				user = User.find_by({username: user_name})
-				@links = user.followees
+		debugLog params
+				
+		case type
+			when "category"
+				@links = Link.joins(:folders).where(folders:{title: value})
+				@active = value
+			
+			when "region"
+				@links = Link.joins(:region).where(regions:{name:value})
+				@active = "all"
+
+			when "user"
+
+				username = params[:name]
+				user = User.find_by({username: username})
+
+				@links = (value == "shared")? user.followees : user.links
+				@active = "all"	
 			else
 				@links = Link.all
+				@active = "all"
 		end
+
+		render :index
 
 	end
 
@@ -61,7 +75,6 @@ class LinkController < ApplicationController
 		if link.save
 			flash[:success] = "Successfully Created."
 			redirect_to(link_path(link.id))
-
 		else
 			flash[:alert] = link.errors.full_messages.join(", ")
 			render :urlGenerated
@@ -75,23 +88,23 @@ class LinkController < ApplicationController
   
   # PATCH/PUT /folders/1
   def update
-	link = Link.find(params[:id])
-	link.name = params[:link][:name]
-	link.url = params[:link][:url]
-	link.description = params[:link][:description]
-	link.region_id = params[:link][:region_id]
+		link = Link.find(params[:id])
+		link.name = params[:link][:name]
+		link.url = params[:link][:url]
+		link.description = params[:link][:description]
+		link.region_id = params[:link][:region_id]
 
-	link.folders = []
-	#collect folders
-	folders_models = collect_folders params[:link][:folders]
-	folders_models.each { |f| link.folders.push(f) }
+		link.folders = []
+		#collect folders
+		folders_models = collect_folders params[:link][:folders]
+		folders_models.each { |f| link.folders.push(f) }
 
-	link.followers = []
+		link.followers = []
 
-	#collect folders
-	followers_models = collect_followers params[:link][:followers]
+		#collect folders
+		followers_models = collect_followers params[:link][:followers]
 
-	followers_models.each { |f| link.followers.push(f) }
+		followers_models.each { |f| link.followers.push(f) }
 
 	  if link.save
 	    flash[:success] = "Successfully Created."
@@ -102,24 +115,24 @@ class LinkController < ApplicationController
 		  
  	end
   	
-  	def add_share
+	def add_share
 
-  	end
+	end
 
-  	def remove_share
+	def remove_share
 
-  	end
+	end
 
-  	def search
-  		@results = Link.all
+	def search
+		@results = Link.all
 
-  		debugLog params
-  		
-  		@results = @results.where('lower(name) ILIKE :search OR lower(url) ILIKE :search OR lower(description) ILIKE :search', search:"%#{params[:text].downcase}%") if !params[:text].nil? and !(params[:text] == "")
-  		@results = @results.where({region_id: params[:region_id]}) if !params[:region_id].nil? and !(params[:region_id] == "")
-  		@results = @results.joins(:folders).where('folder_id = ?', params[:folder_id]) if !params[:folder_id].nil? and !(params[:folder_id] == "")
+		debugLog params
+		
+		@results = @results.where('lower(name) ILIKE :search OR lower(url) ILIKE :search OR lower(description) ILIKE :search', search:"%#{params[:text].downcase}%") if !params[:text].nil? and !(params[:text] == "")
+		@results = @results.where({region_id: params[:region_id]}) if !params[:region_id].nil? and !(params[:region_id] == "")
+		@results = @results.joins(:folders).where('folder_id = ?', params[:folder_id]) if !params[:folder_id].nil? and !(params[:folder_id] == "")
 
-  	end
+	end
 
 	def destroy
 		#shows indivisual link page

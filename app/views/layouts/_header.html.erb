@@ -5,14 +5,19 @@
         <%= image_tag "wesearch_logo.png" %>
       </a>
     </div>
-  
-    <%if user_signed_in? %>
+    
+    <% @active ||= "all" %>
 
+    <%if user_signed_in? %>
+    
     <ul class="nav navbar-nav navbar-right">
-      <li> <a id="all" class="filter_button active" href="#">All</a> </li>
+      <li> 
+        <%= link_to "All", links_path, {id:"all", class:"filter_button #{(@active=="all")? "active": ""}"} %> 
+      </li>
+
       <% Folder.all.each do |f| %>
         <li> 
-          <a id="<%= f.title.downcase %>" class="filter_button" href="#"><%= f.title %></a> 
+          <%= link_to f.title.capitalize, {action: :index, type:"category", value:f.title.downcase}, {id:f.title.downcase, class:"filter_button #{(@active==f.title.downcase)? "active": ""}"} %>
         </li>
       <% end %>
       <li> 
