@@ -24,10 +24,11 @@ Rails.application.routes.draw do
   # get     "user/:user_name/links/:type",    to: "link#index"
   
   get     "links",                          to: "link#index",      as: "links"
-  get     "links/search",                   to: "link#search",     as: "search_links"
+  get     "links/search",                   to: "link#search"
   get     "links/:type/:value",             to: "link#index"
   get     "links/:type/:name/:value",       to: "link#index"
 
+  # get     "links/search",                   to: "link#search",     as: "search_links"
   post    "links/search",                   to: "link#search"
 
 

@@ -1,31 +1,47 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a href="#" class="navbar-brand">
-        <%= image_tag "wesearch_logo.png" %>
-      </a>
-    </div>
+
+    <div class="col-md-3">
+      
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">
+          <%= image_tag "wesearch_logo.png" %>
+        </a>
+      </div>
     
+    </div>
     <% @active ||= "all" %>
 
     <%if user_signed_in? %>
     
-    <ul class="nav navbar-nav navbar-right">
-      <li> 
-        <%= link_to "All", links_path, {id:"all", class:"filter_button #{(@active=="all")? "active": ""}"} %> 
-      </li>
+    <div class="col-md-9">
 
-      <% Folder.all.each do |f| %>
-        <li> 
-          <%= link_to f.title.capitalize, {action: :index, type:"category", value:f.title.downcase}, {id:f.title.downcase, class:"filter_button #{(@active==f.title.downcase)? "active": ""}"} %>
-        </li>
+      <%= form_tag("/links/search", {method: "get", class:"navbar-form navbar-left", role:"search"}) do %>
+        <div class="input-group" id="search_group">
+
+          <%= text_field_tag :q, nil, {class:"form-control", placeholder: 'Find Articles...'}  %>
+          <span class="input-group-btn"><%= submit_tag("Search", {class:"btn btn-default search_button"}) %></span>
+        </div>
       <% end %>
-      <li> 
-        <%= link_to "+", new_link_path, {class:"add_button"}%>
-      </li>
-    </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li> 
+          <%= link_to "All", links_path, {id:"all", class:"filter_button #{(@active=="all")? "active": ""}"} %> 
+        </li>
 
-    <% end %>
+        <% Folder.all.each do |f| %>
+          <li> 
+            <%= link_to f.title.capitalize, {action: :index, type:"category", value:f.title.downcase}, {id:f.title.downcase, class:"filter_button #{(@active==f.title.downcase)? "active": ""}"} %>
+          </li>
+        <% end %>
+        <li> 
+          <%= link_to "+", new_link_path, {class:"add_button"}%>
+        </li>
+      </ul>
+
+      <% end %>
+    </div>
+
   </div>
 </nav>
 
@@ -45,7 +61,6 @@
       <li> <%= link_to "Posted Articles", links_path(:posted) %> </li>
       <li> <%= link_to "Followed Articles", links_path(:followed)%></li>
       
-      <li> <%= link_to "Link Search", search_links_path %></li>
       <li> <%= link_to "All Users", users_path%> </li>      
       <li> <%= link_to "All Folders", folders_path%> </li>
       <li> <%= link_to "All Regions", regions_path%> </li>

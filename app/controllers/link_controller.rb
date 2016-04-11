@@ -28,14 +28,31 @@ class LinkController < ApplicationController
 
 				@links = (value == "shared")? user.followees : user.links
 				@active = "all"	
+
 			else
 				@links = Link.all
 				@active = "all"
+
+			
 		end
 
 		render :index
 
 	end
+
+	def search
+
+		debugLog params
+		value = params[:q]
+		
+		@links = Link.all
+		@links = @links.where('lower(name) ILIKE :search OR lower(url) ILIKE :search OR lower(description) ILIKE :search', search:"%#{value}%") if !value.nil? and !(value == "")
+
+		@active = "all"
+
+		render :index
+	end
+
 
 	def show
 		#shows indivisual link page
@@ -120,17 +137,6 @@ class LinkController < ApplicationController
 	end
 
 	def remove_share
-
-	end
-
-	def search
-		@results = Link.all
-
-		debugLog params
-		
-		@results = @results.where('lower(name) ILIKE :search OR lower(url) ILIKE :search OR lower(description) ILIKE :search', search:"%#{params[:text].downcase}%") if !params[:text].nil? and !(params[:text] == "")
-		@results = @results.where({region_id: params[:region_id]}) if !params[:region_id].nil? and !(params[:region_id] == "")
-		@results = @results.joins(:folders).where('folder_id = ?', params[:folder_id]) if !params[:folder_id].nil? and !(params[:folder_id] == "")
 
 	end
 

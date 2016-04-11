@@ -17,6 +17,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$culture : #90284D;
+$industry : #F0AD4E;
+$education : #284290;
+$talent : #28902D;
+
 .navbar {
 	border-radius: 0 !important;
 	margin-bottom: 0 !important;
@@ -179,39 +184,48 @@ table {
 .article_link .article_content {
 	position:relative;
 	top: 6px;
-left: -18px;
+	left: -18px;
 }
 
 #article_culture {
-	border-left: 8px #90284D solid;
+	border-left: 8px $culture solid;
 }
 
 #article_industry {
-	border-left: 8px #F0AD4E solid;
+	border-left: 8px $industry solid;
 }
 
 #article_education {
-	border-left: 8px #284290 solid;
+	border-left: 8px $education solid;
 }
 
 #article_talent {
-	border-left: 8px #28902D solid;
-}
-
-#education {
-	background-color: #284290 !important;
+	border-left: 8px $talent solid;
 }
 
 #culture {
-	background-color: #90284D !important;
+	background-color: $culture !important;
+}
+
+#industry {
+	background-color: $industry !important;
+}
+
+#education {
+	background-color: $education !important;
 }
 
 #talent {
-	background-color: #28902D !important;
+	background-color: $talent !important;
 }
 
-#marketing {
-	background-color: #a94442 !important;
+#search_group {
+	margin:0px;
+
+	.form-control, .search_button {
+		height:40px;
+	}
+
 }
 
 .filter_button {
@@ -270,10 +284,11 @@ ul.menu_list a:hover {
 	background-color: #5EACDD;
 	color:white;
 	text-decoration: none;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
 
 ul.menu_list li {
-	padding-bottom:5px;
+	padding-bottom:10px;
 }
 
 ul.region_list {
