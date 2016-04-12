@@ -1,5 +1,5 @@
-<h2><a href="<%= @link.url %>" target="_blank"> <%= @link.name %> </a> </h2>
 
+<h2><a class="title" href="<%= @link.url %>" target="_blank"> <%= @link.name %> </a> </h2>
 
 <div class="row">
 	<div class="col-md-3">
@@ -11,17 +11,9 @@
 	</div>
 
 	<div class="col-md-9">
+		<% if @link.user.nil? %>
 		<h3>Posted by <a href="#"><%= @link.user.username %></a> </h3>
-		
-		<h3>Region:</h3>
-		<span class="label label-default"><%= (@link.region.nil?)? "No Region Selected" : @link.region.name %></span>
-
-		<h3>Categories</h3>
-		<div id="folders_container">
-			<% @link.folders.each do |folder| %>
-			<span class="label label-info"><%= folder.title %></span>
-			<% end %>
-		</div>
+		<% end %>
 
 		<h3>Description</h3>
 		<div id="excerpt_container">
@@ -32,6 +24,23 @@
 			<% end %>
 		</div>
 
+
+		<h3>Categories</h3>
+		<div id="folders_container">
+			<% if @link.folders.length > 0 %>
+
+				<% @link.folders.each do |folder| %>
+					<span class="label label-info"><%= folder.title.capitalize %></span>
+				<% end %>
+
+			<% else %>
+				<p>No Categories Selected</p>
+			<% end %>
+		</div>
+	
+		<h3>Region:</h3>
+		<span class="label label-default"><%= (@link.region.nil?)? "No Region Selected" : @link.region.name.capitalize %></span>
+	
 		<h3>Shared With</h3>
 		<div id="followers_container">
 			<% if @link.followers.length == 0 %>
@@ -44,7 +53,7 @@
 		</div> <br/>
 		
 		<div id="link_container">
-			<% if @link.isPoster?(current_user) %>
+			<% if @link.user.isAdmin? || @link.isPoster?(current_user) %>
 
 			<div class="btn-group" role="group" aria-label="...">
 				<%= link_to "Edit", {action: :edit, id: @link.id}, {class: 'btn btn-default', type: "button"} %>

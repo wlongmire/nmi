@@ -1,49 +1,44 @@
 <%= form_for(:link, :url=> {:action=>'create'}) do |f| %>
-	<div class="field">
-		<h4>URL:</h4> 
-		<%= f.text_field(:url) %>
-	</div>
-	
-	<div class="field">
-		<h4>Title:</h4>
-	    <%= f.text_field(:name) %>
-	</div>
-	
-	<div class="field">
-		<h4>Image:</h4>
-		<img src= <%= @link[:img] %> >
-		<br/>
-		<%= f.text_field(:img) %>
+<%= f.text_field :name, autofocus: true, class:"edit_title" %>
+<%= f.hidden_field :url %>
+
+<div class="row">
+  <div class="col-md-3">
+    <%if (@link.img)%>
+      <%= image_tag @link.img, {class:"article_image"} %>
+    <%else%>
+      <%= image_tag "webshot.png", {class:"article_image"} %>
+    <%end%>
+    <%= f.text_field(:img) %>
 		<%= f.hidden_field(:favicon) %>
-	</div>
-	
-	<div class="field">
-		<h4>Description:</h4> 
-		<%= f.text_area(:description) %>
-	</div>
-
-	<div class="field">
-    	<h4>Region:</h4>
-    	<%= f.select(:region_id, Region.all.collect {|r| [ r.name, r.id ] }) %>
-  	</div>
-
-	<div class="field">	
-		<h4>Folder:</h4>
-		<%= f.select(:folders, Folder.all.collect {|p| [ p.title, p.id ] },
-			{ prompt:""}, 
-			{ multiple:true, size: (Folder.all.length+1), class:"form-control" }) %>
-	</div>
-
-	 <div class="field">
-    <h4>Followers:</h4>
-    <%= f.select(:followers, User.all.collect {|u| [ u.username, u.id ] },
-        { prompt:""}, 
-        { multiple:true, size: (User.all.length+1), class:"form-control" }) %>
   </div>
 
+  <div class="col-md-9">
+    <h3>Description</h3>
+    <div id="excerpt_container">
+      <%= f.text_area(:description, class:"edit_desc") %><br/>
+    </div>
+    
+    <h4>Category</h4>
+    <%= f.select(:folders, Folder.all.collect {|p| [ p.title.capitalize, p.id ] }, {}, { class:"form-control edit_cat" }) %>
 
-	<div class="form-buttons">
-		<%= submit_tag("Create") %>
-	</div>
-		
+    <h3>Region:</h3>
+    <input type="hidden" name="id" value="<%= @link.id %>" />
+    <%= f.select(:region_id, Region.all.collect {|r| [ r.name.capitalize, r.id ]}, {}, { class:"form-control edit_region"}) %>
+
+
+    <h3>Shared With</h3>
+    <div id="followers_container">
+      <%= f.select(:followers, User.all.collect {|u| [ u.username, u.id ] }, {}, { multiple:true, size: (User.all.length < 3) ? User.all.length : 3, class:"form-control edit_share" }) %>   
+    </div> <br/>
+    
+    <div id="link_container">
+      <div class="btn-group" role="group" aria-label="...">
+        <%= f.submit "Create", class:"btn btn-primary" %>
+        <%= link_to "Cancel",  links_path, {class: 'btn btn-default', type: "button", method: :delete} %>
+      </div>
+    </div>
+    
+  </div>
 <% end %>
+</div>

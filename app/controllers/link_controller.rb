@@ -82,7 +82,7 @@ class LinkController < ApplicationController
 		link.user = current_user
 
 		#collect folders
-		folders_models = collect_folders params[:link][:folders]
+		folders_models = collect_folders [params[:link][:folders]]
 		folders_models.each { |f| link.folders.push(f) }
 
 		#collect folders
@@ -113,7 +113,7 @@ class LinkController < ApplicationController
 
 		link.folders = []
 		#collect folders
-		folders_models = collect_folders params[:link][:folders]
+		folders_models = collect_folders [params[:link][:folders]]
 		folders_models.each { |f| link.folders.push(f) }
 
 		link.followers = []
@@ -124,11 +124,15 @@ class LinkController < ApplicationController
 		followers_models.each { |f| link.followers.push(f) }
 
 	  if link.save
-	    flash[:success] = "Successfully Created."
+	    flash[:success] = "Successfully Updated."
 			redirect_to(link_path(link.id))
-	    else
-	    	render :edit
-	    end
+	   else
+	   	debugLog(link.errors.full_messages);
+
+	   	flash[:alert] = link.errors.full_messages.join(", ")
+	   	@link = link
+    	render :edit
+	   end
 		  
  	end
   	
@@ -153,7 +157,7 @@ class LinkController < ApplicationController
 		
 		folders_models = []
 
-		f_list[1, f_list.length-1].each do |f|
+		f_list.each do |f|
 			if (f != "") 
 				folders_models.push(Folder.find(f.to_i))
 			end
@@ -166,7 +170,7 @@ class LinkController < ApplicationController
 		
 		follower_models = []
 
-		f_list[1, f_list.length-1].each do |f|
+		f_list.each do |f|
 			if (f != "") 
 				follower_models.push(User.find(f.to_i))
 			end

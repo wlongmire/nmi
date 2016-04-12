@@ -1,11 +1,15 @@
-<%= form_for(:link, :url=> generate_path) do |f| %>
-	<div class="field">
-		<h4>URL:</h4> 
-		<%= f.text_field(:url) %>
-	</div>
-	
-	<div class="form-buttons">
-		<%= submit_tag("Generate From Url") %>
-	</div>
+<div id="generate_container">
 		
-<% end %>
+	<h2>Add New Article</h2>
+
+	<%= form_for(:link, :url=> generate_path) do |f| %>
+		<%= f.text_field(:url, class:"new_url", placeholder:"Enter the Url of the article you want to add" ) %>
+
+		<div class="btn-group" role="group" aria-label="...">
+			<%= f.submit "Upload Article", class:"btn btn-primary" %>
+			<%= link_to "Cancel",  links_path, {class: 'btn btn-default', type: "button", method: :delete} %>
+		</div>
+			
+	<% end %>
+
+</div>

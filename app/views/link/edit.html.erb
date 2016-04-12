@@ -1,53 +1,50 @@
-<h2>Edit Article</h2>
-
 <%= form_for(@link, url: {action: :update, controller: :link}, html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <h4>Name:</h4>
-    <%= f.text_field :name, autofocus: true  %>
+<%= f.text_field :name, autofocus: true, class:"edit_title" %>
+<%= f.hidden_field :url %>
+
+<div class="row">
+  <div class="col-md-3">
+    <%if (@link.img)%>
+      <%= image_tag @link.img, {class:"article_image"} %>
+    <%else%>
+      <%= image_tag "webshot.png", {class:"article_image"} %>
+    <%end%>
   </div>
 
-  <div class="field">
-    <h4>Url:</h4>
-    <%= f.text_field :url %>
-  </div>
-  
-  <div class="field">
-    <h4>Image:</h4>
-    <img src= <%= @link[:img] %> >
-    <br/>
-    <%= f.text_field(:img) %>
-    <%= f.hidden_field(:favicon) %>
-  </div>
-  
-  <div class="field">
-    <h4>Description:</h4>
-    <%= f.text_area(:description) %><br/>
-  </div>
-  
-  <div class="field">
-    <h4>Region:</h4>
-    <%= f.select(:region_id, Region.all.collect {|r| [ r.name, r.id ] }) %>
-  </div>
+  <div class="col-md-9">
+    <h3>Posted by <a href="#"><%= @link.user.username %></a> </h3>
+    
+    <h3>Description</h3>
+    <div id="excerpt_container">
+      <%= f.text_area(:description, class:"edit_desc") %><br/>
+    </div>
+    
+    <h4>Category</h4>
+    <%= f.select(:folders, Folder.all.collect {|p| [ p.title.capitalize, p.id ] }, {}, { class:"form-control edit_cat" }) %>
 
-  <div class="field">
-    <h4>Category:</h4>
-    <%= f.select(:folders, Folder.all.collect {|p| [ p.title, p.id ] },
-        { prompt:""}, 
-        { multiple:true, size: (Folder.all.length+1), class:"form-control" }) %>
-  </div>
-  
-  <div class="field">
-    <h4>Shared With:</h4>
-    <%= f.select(:followers, User.all.collect {|u| [ u.username, u.id ] },
-        { prompt:""}, 
-        { multiple:true, size: (User.all.length+1), class:"form-control" }) %>
-  </div>
+    <h3>Region:</h3>
+    <input type="hidden" name="id" value="<%= @link.id %>" />
+    <%= f.select(:region_id, Region.all.collect {|r| [ r.name.capitalize, r.id ]}, {}, { class:"form-control edit_region"}) %>
 
-  <input type="hidden" name="id" value="<%= @link.id %>" />
 
-  <div class="actions">
-    <%= f.submit "Update", class:"btn btn-primary" %>
+    <h3>Shared With</h3>
+    <div id="followers_container">
+      <%= f.select(:followers, User.all.collect {|u| [ u.username, u.id ] }, {}, { multiple:true, size: (User.all.length < 3) ? User.all.length : 3, class:"form-control edit_share" }) %>   
+    </div> <br/>
+    
+    <div id="link_container">
+      <% if @link.isPoster?(current_user) %>
+
+      <div class="btn-group" role="group" aria-label="...">
+        <%= f.submit "Update", class:"btn btn-primary" %>
+
+        <%= link_to "Cancel",  link_path(@link.id), {class: 'btn btn-default', type: "button", method: :delete} %>
+      </div>
+
+      <% end %> 
+    </div>
+    
   </div>
-
 <% end %>
+</div>
