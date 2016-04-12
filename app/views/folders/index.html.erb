@@ -15,7 +15,7 @@
   <tbody>
     <% @folders.each do |folder| %>
       <tr>
-        <td><%= folder.title %></td>
+        <td><%= folder.title.capitalize %></td>
         <td><%= folder.description %></td>
         <td><%= folder.links.length %></td>
         <td>
@@ -25,7 +25,7 @@
             <% if current_user.isAdmin? %>
               <%= link_to 'Edit', edit_folder_path(folder), {class: 'btn btn-default', type: "button"} %>
 
-              <%= link_to 'Destroy', folder, method: :delete, class: 'btn btn-danger', type: "button", data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Delete', folder, method: :delete, class: 'btn btn-danger', type: "button", data: { confirm: 'Are you sure?' } %>
             <% end %>
 
           </div>

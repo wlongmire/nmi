@@ -24,6 +24,17 @@
     </ul>
   </li>
 
+  <% if current_user.isAdmin? %>
+  <li>
+    <span style="padding: 8px; font-weight: bold; text-transform: uppercase;">Admin:</span>
+    <ul style="margin-top:8px;" class="region_list">
+      
+      <li> <%= link_to "Edit Users",  users_path%> </li>
+      <li> <%= link_to "Edit Regions", regions_path%> </li>
+      <li> <%= link_to "Edit Categories", folders_path%> </li>
+    </ul>
+  </li>
+  <% end %>
 
   <li>
     <%= link_to "Logout", destroy_user_session_path, {method: :delete, class:"logout_button"} %>

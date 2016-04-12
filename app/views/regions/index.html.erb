@@ -13,12 +13,12 @@
   <tbody>
     <% @regions.each do |region| %>
       <tr>
-        <td><%= region.name %></td>
+        <td><%= region.name.capitalize %></td>
         <td>
           <div class="btn-group" role="group" aria-label="...">
             <%= link_to 'Show', region, {class: 'btn btn-default', type: "button"}  %>
             <%= link_to 'Edit', edit_region_path(region), {class: 'btn btn-default', type: "button"}  %>
-            <%= link_to 'Destroy', region, {class:"btn btn-danger", type:"button", method: :delete, data: { confirm: 'Are you sure?'} } %>
+            <%= link_to 'Delete', region, {class:"btn btn-danger", type:"button", method: :delete, data: { confirm: 'Are you sure?'} } %>
           </div>
         </td>
       </tr>

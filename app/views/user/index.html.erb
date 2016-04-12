@@ -14,8 +14,7 @@
 			<td>
 				
 				<div class="btn-group" role="group" aria-label="...">
-					<%= link_to "Show Links", {action: :index, controller: "link", user_name: u.username, type: :posted}, {class: 'btn btn-default', type: "button"} %>
-
+					
 					<% if current_user.admin %>
 					
 						<%= link_to "Edit", edit_user_path(u.username), {class: 'btn btn-default', type: "button"} %>
