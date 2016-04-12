@@ -3,7 +3,7 @@
 	<h2>Add New Article</h2>
 
 	<%= form_for(:link, :url=> generate_path) do |f| %>
-		<%= f.text_field(:url, class:"new_url", placeholder:"Enter the Url of the article you want to add" ) %>
+		<%= f.text_field(:url, class:"new_url", id:"new_url", placeholder:"Enter the Url of the article you want to add" ) %>
 
 		<div class="btn-group" role="group" aria-label="...">
 			<%= f.submit "Upload Article", class:"btn btn-primary" %>

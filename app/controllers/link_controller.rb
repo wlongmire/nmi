@@ -88,7 +88,7 @@ class LinkController < ApplicationController
 		#collect folders
 		followers_models = collect_followers params[:link][:followers]
 		followers_models.each { |f| link.followers.push(f) if f != current_user }
-
+		
 		if link.save
 			flash[:success] = "Successfully Created."
 			redirect_to(link_path(link.id))
