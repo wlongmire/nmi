@@ -23,7 +23,14 @@
       <% end %>
     </ul>
   </li>
+
+
   <li>
     <%= link_to "Logout", destroy_user_session_path, {method: :delete, class:"logout_button"} %>
   </li>
+  
+  <li>
+    <%= link_to "Download Chrome Extension", "extension/nmi_extension.zip", {class: "download_link"} %>
+  </li>
+  
 </ul>
