@@ -5,7 +5,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     
     chrome.tabs.create({ url: "https://nmiresearcher.herokuapp.com/link", active:true}, function(){
     	chrome.tabs.executeScript({
-   			code: 'document.getElementById("new_url").value = "' + url + '"; document.forms["loginForm"].submit();'
+   			code: 'document.getElementById("new_url").value = "' + url + '"; document.forms["new_form"].submit();'
   		});
   	});
 
