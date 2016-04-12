@@ -3,7 +3,7 @@
     <div class="col-md-3 article_icon">
 
       <a href="#">
-      	<%if link.favicon.nil? %>
+      	<%if link.favicon.nil? || link.favicon == "" %>
 					<%= image_tag "favicon.png" %>
 				<%else%>
 					<%= image_tag link.favicon, {class:"fav"} %>
