@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-regions = ["global", "new york", "san francisco", "chicago", "madrid"]
+regions = ["global", "APAC", "EMEA", "LATAM", "NA"]
 
 folders = [{title:"culture", description:"Cultural Implications in Education Globally"}, {title:"industry", description:"Programmatic Emerging Market Trends"}, {title:"education", description:"Technology’s Role in Education’s Scale"}, {title:"talent", description:"The Future of Digital Talent"}]
 
