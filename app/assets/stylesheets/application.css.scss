@@ -213,7 +213,8 @@ table {
 	border-left: 8px $talent solid;
 }
 
-#all {
+#all, #all.active {
+	
 	background-color: darken($all, 15%) !important;
 }
 
@@ -221,7 +222,7 @@ table {
 	background-color: $all !important;
 }
 
-#culture {
+#culture, #education.active {
 	background-color: darken($culture, 15%) !important;
 }
 
@@ -230,7 +231,7 @@ table {
 }
 
 
-#industry {
+#industry, #education.active {
 	background-color: darken($industry, 15%) !important;
 }
 
@@ -239,11 +240,11 @@ table {
 }
 
 
-#education {
+#education, #education.active {
 	background-color: darken($education, 15%) !important;
 }
 
-#education:hover {
+#education:hover, #education.active {
 	background-color: $education !important;
 }
 
@@ -271,14 +272,21 @@ table {
 	font-weight: bold;
 
 	background-color:#49A3CE !important;
-	color:white !important;
+	color:rgba(255, 255, 255, 0.8) !important;
+	
+	opacity: 0.8;
+}
+
+.filter_button:hover {
+	color:rgba(255, 255, 255, 1) !important;
 	
 	opacity: 0.8;
 }
 
 .filter_button.active {
-	color:black !important;
+	color:white !important;
 	opacity: 1;
+
 }
 
 .share_button {

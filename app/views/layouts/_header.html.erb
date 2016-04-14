@@ -31,7 +31,7 @@
 
         <% Folder.all.each do |f| %>
           <li> 
-            <%= link_to f.title.capitalize, {action: :index, type:"category", value:f.title.downcase}, {id:f.title.downcase, class:"filter_button #{(@active==f.title.downcase)? "active": ""}"} %>
+              <%= link_to f.title.capitalize, {action: :index, type:"category", value:f.title.downcase}, {id:f.title.downcase, class:"filter_button #{(@active==f.title.downcase)? "active": ""}"} %>
           </li>
         <% end %>
         <li> 
