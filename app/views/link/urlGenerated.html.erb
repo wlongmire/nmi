@@ -22,6 +22,7 @@
     <h3>Category</h3>
     <%= f.select(:folders, Folder.all.collect {|p| [ p.title.capitalize, p.id ] }, {}, { class:"form-control edit_cat" }) %>
 
+    <!-- test -->
     <h3>Region</h3 > 
     <input type="hidden" name="id" value="<%= @link.id %>" />
     <%= f.select(:region_id, Region.all.collect {|r| [ r.name, r.id ]}, {}, { class:"form-control edit_region"}) %>
