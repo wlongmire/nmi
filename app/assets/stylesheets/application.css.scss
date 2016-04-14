@@ -17,6 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$all : #49A3CE;
 $culture : #90284D;
 $industry : #F0AD4E;
 $education : #284290;
@@ -195,6 +196,7 @@ table {
 	left: -18px;
 }
 
+
 #article_culture {
 	border-left: 8px $culture solid;
 }
@@ -211,19 +213,46 @@ table {
 	border-left: 8px $talent solid;
 }
 
+#all {
+	background-color: darken($all, 15%) !important;
+}
+
+#all:hover {
+	background-color: $all !important;
+}
+
 #culture {
+	background-color: darken($culture, 15%) !important;
+}
+
+#culture:hover {
 	background-color: $culture !important;
 }
 
+
 #industry {
+	background-color: darken($industry, 15%) !important;
+}
+
+#industry:hover {
 	background-color: $industry !important;
 }
 
+
 #education {
+	background-color: darken($education, 15%) !important;
+}
+
+#education:hover {
 	background-color: $education !important;
 }
 
+
 #talent {
+	background-color: darken($talent, 15%) !important;
+}
+
+#talent:hover {
 	background-color: $talent !important;
 }
 
@@ -243,17 +272,13 @@ table {
 
 	background-color:#49A3CE !important;
 	color:white !important;
-	opacity:0.3;
-}
-
-.filter_button:hover {
-	opacity:0.7;
-
+	
+	opacity: 0.8;
 }
 
 .filter_button.active {
-	opacity:1;
 	color:black !important;
+	opacity: 1;
 }
 
 .share_button {

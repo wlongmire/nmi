@@ -12,11 +12,11 @@ class LinkController < ApplicationController
 				
 		case type
 			when "category"
-				@links = Link.joins(:folders).where(folders:{title: value})
+				@links = Link.joins(:folders).where(folders:{title: value}).order(created_at: :desc)
 				@active = value
 			
 			when "region"
-				@links = Link.joins(:region).where(regions:{name:value})
+				@links = Link.order(created_at: :desc).joins(:region).where(regions:{name:value}).order(created_at: :desc)
 				@active = "all"
 
 			when "user"
@@ -24,12 +24,16 @@ class LinkController < ApplicationController
 				username = params[:name]
 				user = User.find_by({username: username})
 
-				@links = (value == "shared")? user.followees : user.links
+				@links = (value == "shared")? user.followees.order(created_at: :desc) : user.links.order(created_at: :desc)
 				@active = "all"	
 
 			else
-				@links = Link.all
+				@links = Link.all.order(created_at: :desc)
 				@active = "all"
+		end
+
+		@links.each do |l|
+			puts l.created_at
 		end
 
 		render :index
