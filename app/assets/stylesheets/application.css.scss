@@ -94,6 +94,8 @@ nav {
 	text-align: center;
 	
 	margin-left: 30px;
+	margin-top: 3px;
+
 	box-shadow: 0px 3px 5px rgba(0,0,0,0.9);
 	border-radius: 3px;
 
@@ -214,8 +216,10 @@ table {
 }
 
 #all, #all.active {
-	
+
 	background-color: darken($all, 15%) !important;
+	border-radius: 8px 0px 0px 8px;
+	border-right: 0;
 }
 
 #all:hover {
@@ -224,6 +228,7 @@ table {
 
 #culture, #education.active {
 	background-color: darken($culture, 15%) !important;
+	border-right: 0;
 }
 
 #culture:hover {
@@ -233,6 +238,7 @@ table {
 
 #industry, #education.active {
 	background-color: darken($industry, 15%) !important;
+	border-right: 0;
 }
 
 #industry:hover {
@@ -242,6 +248,7 @@ table {
 
 #education, #education.active {
 	background-color: darken($education, 15%) !important;
+	border-right: 0;
 }
 
 #education:hover, #education.active {
@@ -251,6 +258,7 @@ table {
 
 #talent {
 	background-color: darken($talent, 15%) !important;
+	border-radius: 0px 8px 8px 0px;
 }
 
 #talent:hover {
@@ -267,13 +275,14 @@ table {
 }
 
 .filter_button {
-	padding:18px !important;
+	padding:16px !important;
 	
 	font-weight: bold;
 
 	background-color:#49A3CE !important;
 	color:rgba(255, 255, 255, 0.8) !important;
-	
+	border: 2px solid #322C44;
+
 	opacity: 0.8;
 }
 
