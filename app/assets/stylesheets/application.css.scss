@@ -312,6 +312,11 @@ table {
 	letter-spacing: 1px;
 }
 
+.poster_button {
+	background-color: rbga(0,0,0,0);
+	color:black;
+}
+
 .article_button:hover {
 	text-decoration: none;
 	color:black;

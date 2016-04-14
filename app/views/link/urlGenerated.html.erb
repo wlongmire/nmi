@@ -27,7 +27,7 @@
     <%= f.select(:region_id, Region.all.collect {|r| [ r.name, r.id ]}, {}, { class:"form-control edit_region"}) %>
 
 
-    <h3>Shared With</h3>
+    <h3>Share With</h3>
     <div id="followers_container">
       <%= f.select(:followers, User.all.collect {|u| [ u.username, u.id ] }, {}, { multiple:true, size: (User.all.length < 3) ? User.all.length : 3, class:"form-control edit_share" }) %>   
     </div> <br/>
