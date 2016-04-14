@@ -25,12 +25,12 @@
 		</div>
 
 
-		<h3>Categories</h3>
+		<h3>Category</h3>
 		<div id="folders_container">
 			<% if @link.folders.length > 0 %>
 
 				<% @link.folders.each do |folder| %>
-					<span class="label label-info"><%= folder.title.capitalize %></span>
+					<span class="label label-default"><%= folder.title.capitalize %></span>
 				<% end %>
 
 			<% else %>
@@ -38,7 +38,7 @@
 			<% end %>
 		</div>
 	
-		<h3>Region:</h3>
+		<h3>Region</h3>
 		<span class="label label-default"><%= (@link.region.nil?)? "No Region Selected" : @link.region.name %></span>
 	
 		<h3>Shared With</h3>
