@@ -24,7 +24,7 @@
 
     <h3>Region:</h3>
     <input type="hidden" name="id" value="<%= @link.id %>" />
-    <%= f.select(:region_id, Region.all.collect {|r| [ r.name.capitalize, r.id ]}, {}, { class:"form-control edit_region"}) %>
+    <%= f.select(:region_id, Region.all.collect {|r| [ r.name, r.id ]}, {}, { class:"form-control edit_region"}) %>
 
 
     <h3>Shared With</h3>
@@ -35,7 +35,7 @@
     <div id="link_container">
       <div class="btn-group" role="group" aria-label="...">
         <%= f.submit "Create", class:"btn btn-primary" %>
-        <%= link_to "Cancel",  links_path, {class: 'btn btn-default', type: "button", method: :delete} %>
+        <%= link_to "Cancel",  links_path, {class: 'btn btn-default', type: "button"} %>
       </div>
     </div>
     

@@ -13,7 +13,7 @@
   <tbody>
     <% @regions.each do |region| %>
       <tr>
-        <td><%= region.name.capitalize %></td>
+        <td><%= region.name %></td>
         <td>
           <div class="btn-group" role="group" aria-label="...">
             <%= link_to 'Show', region, {class: 'btn btn-default', type: "button"}  %>

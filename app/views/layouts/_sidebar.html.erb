@@ -18,7 +18,7 @@
     <ul style="margin-top:8px;" class="region_list">
       <% Region.all.each do |r| %>
       <li>
-        <%= link_to r.name.capitalize, {action: :index, type:"region", value:r.name.downcase}%>
+        <%= link_to r.name, {action: :index, type:"region", value:r.name}%>
       </li>
       <% end %>
     </ul>

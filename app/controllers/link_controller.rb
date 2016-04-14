@@ -9,8 +9,6 @@ class LinkController < ApplicationController
 		#also handles follow types
 		type = params[:type] || :all
 		value = params[:value]
-
-		debugLog params
 				
 		case type
 			when "category"
@@ -32,8 +30,6 @@ class LinkController < ApplicationController
 			else
 				@links = Link.all
 				@active = "all"
-
-			
 		end
 
 		render :index

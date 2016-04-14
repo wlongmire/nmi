@@ -20,12 +20,13 @@
       <%= f.text_area(:description, class:"edit_desc") %><br/>
     </div>
     
+
     <h4>Category</h4>
     <%= f.select(:folders, Folder.all.collect {|p| [ p.title.capitalize, p.id ] }, {}, { class:"form-control edit_cat" }) %>
 
     <h3>Region:</h3>
     <input type="hidden" name="id" value="<%= @link.id %>" />
-    <%= f.select(:region_id, Region.all.collect {|r| [ r.name.capitalize, r.id ]}, {}, { class:"form-control edit_region"}) %>
+    <%= f.select(:region_id, Region.all.collect {|r| [ r.name, r.id ]}, {}, { class:"form-control edit_region"}) %>
 
 
     <h3>Shared With</h3>
@@ -39,7 +40,7 @@
       <div class="btn-group" role="group" aria-label="...">
         <%= f.submit "Update", class:"btn btn-primary" %>
 
-        <%= link_to "Cancel",  link_path(@link.id), {class: 'btn btn-default', type: "button", method: :delete} %>
+        <%= link_to "Cancel",  link_path(@link.id), {class: 'btn btn-default', type: "button"} %>
       </div>
 
       <% end %> 
