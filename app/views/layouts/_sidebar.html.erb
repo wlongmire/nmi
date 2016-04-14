@@ -1,4 +1,4 @@
-<span style="margin-left:40px; padding: 8px; font-weight: bold; text-transform: uppercase;">Welcome <%= current_user.username%></span>
+<span style="margin-left:40px; padding: 8px; font-weight: bold; text-transform: uppercase;">Welcome <%=link_to current_user.username, edit_user_path(current_user.username) %></span>
   
 <ul class="menu_list">
   <li>

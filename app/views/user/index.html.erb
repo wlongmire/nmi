@@ -28,3 +28,7 @@
 	<% end %>
 	
 </table>
+
+<% if current_user.isAdmin? %>
+<%= link_to 'New User', new_user_registration_path, {class: 'btn btn-default', type: "button"}  %>
+<% end %>

@@ -28,7 +28,8 @@
       </div>
       
       <div class="article_poster">
-        <a href="#" class="article_button">
+        <p class="poster_button">
+          Posted by
         	<%= 
 					if (!link.user.nil?)
 						(current_user == link.user)? "You" : link.user.username 
@@ -36,7 +37,7 @@
 						"No User Specified"
 					end
 					%>
-				</a>
+				</p>
       </div>
 
     </div>

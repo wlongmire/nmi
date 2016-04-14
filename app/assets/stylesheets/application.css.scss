@@ -186,7 +186,7 @@ table {
 
 .article_link .article_poster {
 	position: absolute;
-	bottom: -17px;
+	bottom: -20px;
 }
 
 .article_link .article_content {
@@ -260,7 +260,7 @@ table {
 	font-weight: bold !important;
 }
 
-.article_button {
+.article_button, .poster_button {
 	font-size: 9px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -373,7 +373,12 @@ ul.region_list {
 	  margin-bottom: 10px;
 	  padding: 10px;
 	}
-
+	
+	.upload_button {
+		height: 56px;
+    position: relative;
+    top: -4px;
+	}
 }
 
 .download_link {
