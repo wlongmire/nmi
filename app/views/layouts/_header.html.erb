@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
 
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-1">
       
       <div class="navbar-header">
         <a href="#" class="navbar-brand">
@@ -14,7 +14,7 @@
 
     <%if user_signed_in? %>
     
-    <div class="col-md-9">
+    <div class="col-md-9 col-sm-11">
 
       <%= form_tag("/links/search", {method: "get", class:"navbar-form navbar-left", role:"search"}) do %>
         <div class="input-group" id="search_group">
@@ -44,30 +44,3 @@
 
   </div>
 </nav>
-
-<!-- <div class="alert notice alert-warning" role="alert"><%= alert %></div>
- -->  
-<!-- <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to "NMI Researcher", root_path, {class:"navbar-brand"} %>
-    </div>
-
-	  
-    <ul class="nav navbar-nav navbar-right">
-    	
-      <li> <%= link_to "Add Article", new_link_path %> </li>
-      <li> <%= link_to "All Articles", links_path(:all) %> </li>
-      <li> <%= link_to "Posted Articles", links_path(:posted) %> </li>
-      <li> <%= link_to "Followed Articles", links_path(:followed)%></li>
-      
-      <li> <%= link_to "All Users", users_path%> </li>      
-      <li> <%= link_to "All Folders", folders_path%> </li>
-      <li> <%= link_to "All Regions", regions_path%> </li>
-		  <li class="active">
-			 <%= link_to("Logout", destroy_user_session_path, {:method => :delete}) %>
-		  </li>
-    </ul>
-
-  </div>
-</nav> -->

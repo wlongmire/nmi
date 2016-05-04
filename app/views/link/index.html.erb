@@ -2,13 +2,13 @@
 	<% if (@links.length > 0) %>
 	
 
-		<div class="col-md-6">
+		<div class="col-lg-6 col-md-12">
 			<% @links.each_with_index do |l, idx| %>
 				<%= render :partial => 'article', :locals => {:link => l} if idx%2 == 0%>
 			<% end %>
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-lg-6 col-md-12">
 			<% @links.each_with_index do |l, idx| %>
 				<%= render :partial => 'article', :locals => {:link => l} if idx%2 == 1%>
 			<% end %>
